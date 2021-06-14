@@ -1,0 +1,73 @@
+<h1 mat-dialog-title>Add New Questions</h1>
+<div mat-dialog-content>
+    <div class="formRadio">
+        <form [formGroup]="frequenceForm" novalidate>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                formControlName="choixFrequence">
+                <mat-radio-button class="example-radio-button" *ngFor="let frequence of frequences" [value]="frequence" >
+                    {{frequence}}
+                </mat-radio-button>
+            </mat-radio-group>
+
+            <div class="classInput">
+                <div class="form-chaqueJourXHeures" *ngIf="choixFrequenceChaqueJoursXParHeures()">
+                    <form [formGroup]="frequenceForm">
+                        <div class="chaqueJourXHeures">
+                            <mat-form-field [attr.aria-label]="'Heure de Debut'">
+                                <input name="heureDebut" matInput type="time" formControlName="heureDebut" placeholder="Heure de debut"
+                                value="07:30" required>
+                            </mat-form-field>
+                            <mat-form-field [attr.aria-label]="'Rappel'">
+                                <input name="rappel" matInput type="time" formControlName="rappel" placeholder="rappel"
+                                value="00:30" >
+                            </mat-form-field>
+                            
+                            <mat-form-field [attr.aria-label]="'Heure de fin'">
+                                <input name="heureFin" matInput type="time" formControlName="heureFin" placeholder="Heure de fin"
+                                value="21:30" required>
+                            </mat-form-field>
+                        </div>
+                    </form>
+                </div>
+                <div class="TtsXJours" *ngIf="choixFrequenceTtsxJours()">
+                    <form [formGroup]="frequenceForm">
+                        <mat-form-field [attr.aria-label]="'Tous les :'">
+                            <input name="x" matInput type="number" formControlName="x" placeholder="Tous les">
+                        </mat-form-field>
+                    </form>
+                </div>
+                <div class="CertainsJours" *ngIf="choixFrequenceCertainsJours()">
+                    <form class="CertainsJours" [formGroup]="frequenceForm">
+                        <mat-checkbox formControlName="lundi">
+                            Lundi 
+                        </mat-checkbox>
+                        <mat-checkbox formControlName="mardi">
+                            Mardi 
+                        </mat-checkbox>
+                        <mat-checkbox formControlName="mercredi">
+                            Mercredi 
+                        </mat-checkbox>
+                        <mat-checkbox formControlName="jeudi">
+                            Jeudi 
+                        </mat-checkbox>
+                        <mat-checkbox formControlName="vendredi">
+                            Vendredi 
+                        </mat-checkbox>
+                        <mat-checkbox formControlName="samedi">
+                            Samedi 
+                        </mat-checkbox>
+                        <mat-checkbox formControlName="dimanche">
+                            Dimanche 
+                        </mat-checkbox>
+                    </form>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+<div mat-dialog-actions align="end">
+    <button type="button" mat-raised-button mat-dialog-close [attr.aria-label]="'Annuler'">Cancel</button>
+    <button type="button" mat-raised-button (click)="saveFrequence()" [attr.aria-label]="'Enregistrer médicament'">Save</button>
+</div>

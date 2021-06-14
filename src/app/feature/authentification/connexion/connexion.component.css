@@ -1,0 +1,54 @@
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+#card {
+    width: 25vw;
+    height: 40vh;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+
+}
+
+#box1, #box2, #box3 {
+    justify-content: center;
+}
+
+#box1 {
+    height: 10%;
+    /* background-color: lightblue; */
+}
+
+#box2 {
+    flex-direction: column;
+    height: 60%;
+    /* background-color: lightcoral; */
+}
+
+#box3 {
+    flex-direction: column;
+    height: 30%;
+    /* background-color: lightgreen; */
+}
+
+.button {
+    width: 12vw;
+    border-radius: 50px;
+}
+
+#button1 {
+    background-color: #408DC5;
+    margin-bottom: 3%;
+}
+
+#button2 {
+    background-color: lightgray;
+}

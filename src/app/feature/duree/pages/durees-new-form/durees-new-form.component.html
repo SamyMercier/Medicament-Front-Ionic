@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Choisir la duree du medicament</h1>
+<div mat-dialog-content>
+    <div class="formRadio">
+        <form [formGroup]="dureeForm" novalidate>
+            <mat-form-field [attr.aria-label]="'Date de debut'">
+                <input name="dateDebut" matInput type="date" formControlName="dateDebut" placeholder="date de debut">
+            </mat-form-field>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                formControlName="choixDuree">
+                <mat-radio-button class="example-radio-button" *ngFor="let duree of durees" [value]="duree" >
+                    {{duree}}
+                </mat-radio-button>
+            </mat-radio-group>
+
+            <div class="classInput">
+                <div class="jusqueX" *ngIf="choixDureeJusqueX()">
+                    <form [formGroup]="dureeForm">
+                        <mat-form-field [attr.aria-label]="'jusquau :'">
+                            <input name="dateFin" matInput type="date" formControlName="dateFin" placeholder="jusqu'au">
+                        </mat-form-field>
+                    </form>
+                </div>
+                <div class="pendantX" *ngIf="choixDureePendantX()">
+                    <form [formGroup]="dureeForm">
+                        <mat-form-field [attr.aria-label]="'Pendant :'">
+                            <input name="nbJour" matInput type="number" formControlName="nbJour" placeholder="2 jours">
+                        </mat-form-field>
+                    </form>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<div mat-dialog-actions align="end">
+    <button type="button" mat-raised-button mat-dialog-close [attr.aria-label]="'Annuler'">Cancel</button>
+    <button type="button" mat-raised-button (click)="saveDuree()" [attr.aria-label]="'Enregistrer médicament'"
+        [disabled]="dureeForm.invalid">Save</button>
+</div>

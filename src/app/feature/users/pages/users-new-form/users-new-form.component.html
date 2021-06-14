@@ -1,0 +1,24 @@
+<h1>Medical.</h1>
+
+<h2>Créer un utilisateur</h2>
+
+<div id="container"> 
+    <form [formGroup]="userProfile" (ngSubmit)="inscription()">
+        <label> Nom :
+            <input type="text" class="to-uppercase" formControlName="nom">
+        </label>
+        <label> Prenom :
+            <input type="text" formControlName="prenom">
+        </label>
+        <label> Date de naissance :
+            <input type="date" placeholder="jour/mois/année" formControlName="dateDeNaissance">
+        </label>
+
+        <button type="submit">Créer un utilisateur</button>
+    </form>
+    <app-button-redirector routerLink="/users">
+        Retour
+    </app-button-redirector>
+
+</div>
+

@@ -1,0 +1,24 @@
+<section id="container">
+    <form [formGroup]="connexionForm">
+        <mat-card id="card">
+            <section id="box1" class="box">
+                <mat-card-title>Se connecter</mat-card-title>
+            </section>
+            <section id="box2" class="box">
+                <mat-form-field appearance="standard">
+                    <mat-label>Email</mat-label>
+                    <input type="text" matInput placeholder="Saisir une adresse email" formControlName="email">
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                    <mat-label>Mot de passe</mat-label>
+                    <input type="password" matInput placeholder="Saisir un mot de passe" formControlName="motDePasse">
+                </mat-form-field>
+                <a mat-button id="link" routerLink="/mdp_oublie">Mot de passe oublié ?</a>
+            </section>
+            <section id="box3" class="box">
+                <button id="button1" class="button" mat-raised-button color="primary" type="submit" (click)="verifierCompteExiste()">Se connecter</button>
+                <button id="button2" class="button" mat-raised-button type="submit" routerLink="/inscription">Créer un compte</button>
+            </section>
+        </mat-card>
+    </form>
+</section>

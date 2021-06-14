@@ -1,0 +1,30 @@
+
+
+div{
+    background-color: white;
+    width: 40%;
+    height: 20vh;
+    margin: auto;
+    margin-top:25vh;
+    padding: 7vh 5vw 10vh 5vw;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 40px;
+    color : #4997D1;
+}
+
+p{
+    margin: 0;
+    color : #4997D1;
+    font-size: 22px;
+    margin-bottom: 10vh;
+}
+
+

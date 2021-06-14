@@ -1,0 +1,28 @@
+<h1>Medical.</h1>
+
+<div id="affichage">
+    <div id="users-area" *ngIf="users">
+        <p>Utilisateur(s) du compte</p>
+        <div class="profile" routerLink="/users/details/:id" *ngFor="let user of users">
+            <div class="profile-picture"></div>
+            <span>{{user.nom}} {{user.prenom}}</span>
+        </div>
+    </div>
+    
+    <div id="assistant-area" *ngIf="assistants">
+        <p>Assistant(s)</p>
+        <div class="profile" routerLink="/users/assistant/:id" *ngFor="let assistant of assistants">
+            <div class="profile-picture"></div>
+            <span>{{assistant.nom}} {{assistant.prenom}}</span>
+        </div>
+    </div>
+</div>
+
+<div id="button-container">
+    <app-button-redirector routerLink="/users/create">
+        Ajouter un utilisateur
+    </app-button-redirector>
+    <app-button-redirector routerLink="/home">
+        Retour
+    </app-button-redirector>
+</div>

@@ -1,0 +1,98 @@
+h1{
+    color: white;
+    font-weight: bolder;
+    font-size: 40px;
+    margin: auto;
+    width: 80px;
+}
+
+input{
+    background-color: #267EBD;
+    border : none;
+    border-bottom: 1px solid #408DC5;
+    color: white;
+    font-size: 20px;
+    padding: 10px 0;
+    
+}
+
+.to-uppercase{
+    text-transform:uppercase;
+}
+
+input:focus{
+    outline: none;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    justify-content: space-around;
+}
+
+button{
+    background-color: #408DC5;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 20px;
+    width: 230px;
+}
+
+button:hover{
+    cursor: pointer;
+    outline : 1px solid white
+}
+
+#container{
+    color:white;
+    width: 50vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+h2{
+    color:white;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    margin:40px auto
+}
+
+.profile-picture{
+    width: 80px;
+    height: 80px;
+    background-color: black;
+    border-radius: 40px;
+}
+
+#profile-picture-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 300px;
+    margin: 0 0 20px 0;
+}
+
+span{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+i{
+    font-size: 20px;
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 20px;
+    color:#93BEDE;
+}
