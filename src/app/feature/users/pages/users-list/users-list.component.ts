@@ -31,7 +31,7 @@ export class UsersListComponent implements OnInit {
   }
 
   showUrl = (id : String) => {
-    console.log("http://localhost:8080/users/"+id)
+    console.log("http://localhost:8080/utilisateurs/"+id)
   }
 
 }
