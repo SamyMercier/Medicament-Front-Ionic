@@ -11,6 +11,8 @@ import { UserService } from '../../services/user.service';
 })
 export class UsersListComponent implements OnInit {
 
+  compteId : string = "60bf6ba371add870faebfc20";
+
   users : User[];
   assistants : AssistantOuAssiste[];
   assistes : AssistantOuAssiste[];
@@ -21,7 +23,7 @@ export class UsersListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.service.findAll().subscribe(
+    this.service.findAllByCompteId(this.compteId).subscribe(
       (data:User[])=>this.users = data,
       console.error)
   }
