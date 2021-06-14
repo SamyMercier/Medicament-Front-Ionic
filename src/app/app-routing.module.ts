@@ -37,13 +37,11 @@ import { UsersPagesComponent } from './feature/users/pages/users-pages/users-pag
 
 const routes: Routes = [
   {
-    path: "users", component: UsersPagesComponent,
+    path: "utilisateurs", component: UsersPagesComponent,
     children: [
       { path: "create", component: UsersNewFormComponent },
-      { path: "detail", component: UsersDetailComponent, children: [
-        { path:":id", component: UsersDetailComponent},
-        { path:"assistant/:id", component: AssistantDetailComponent}
-      ] },
+      { path: "details/:id", component: UsersDetailComponent}, 
+      { path: "assistant/:id", component: AssistantDetailComponent},
       { path: "update/:id", component: UsersEditFormComponent },
       { path: "list", component: UsersListComponent },
       { path: "", component: UsersListComponent }

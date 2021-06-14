@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AssistantOuAssiste } from '../../models/assistant-ou-assiste';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
@@ -12,17 +13,17 @@ export class UsersListComponent implements OnInit {
 
   users : User[];
   assistants : AssistantOuAssiste[];
+  assistes : AssistantOuAssiste[];
 
-  constructor(userService:UserService) {
-    this.users=userService.findAll();
-  }
+  constructor(
+    private service : UserService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-  }
-
-  getFirstUserName = () => {
-    let firstUser = this.users[0];
-    return firstUser.nom;
+    this.service.findAll().subscribe(
+      (data:User[])=>this.users = data,
+      console.error)
   }
 
 }
