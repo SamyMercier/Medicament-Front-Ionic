@@ -26,12 +26,4 @@ export class UsersListComponent implements OnInit {
       console.error)
   }
 
-  getUserList = () => {
-    console.log(this.users);
-  }
-
-  showUrl = (id : String) => {
-    console.log("http://localhost:8080/utilisateurs/"+id)
-  }
-
 }

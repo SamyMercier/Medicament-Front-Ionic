@@ -10,7 +10,7 @@ import { UserService } from '../../services/user.service';
 })
 export class UsersDetailComponent implements OnInit {
 
-  user! : User;
+  user! : User ;
 
   constructor(
     private service : UserService,
@@ -19,21 +19,13 @@ export class UsersDetailComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    let id : string = this.getIdFromRoute();
-    this.user = this.getUserFromId(id);
-      
-  }
-
-  getIdFromRoute : any = () => {
+    let id : string;
     this.route.paramMap.subscribe(params => {
-      return params.get("id")
+      id =  params.get("id")
     });
-  }
-
-  getUserFromId : any = (id : string) => {
+    
     this.service.findById(id).subscribe(elem  => {
-      return elem;
-    });
+      this.user = elem
+    })
   }
-
 }

@@ -40,8 +40,7 @@ const routes: Routes = [
     path: "utilisateurs", component: UsersPagesComponent,
     children: [
       { path: "create", component: UsersNewFormComponent },
-      { path: "detail/:id", component: UsersDetailComponent}, 
-      { path: ":id", component: UsersDetailComponent},
+      { path: "details/:id", component: UsersDetailComponent}, 
       { path: "assistant/:id", component: AssistantDetailComponent},
       { path: "update/:id", component: UsersEditFormComponent },
       { path: "list", component: UsersListComponent },

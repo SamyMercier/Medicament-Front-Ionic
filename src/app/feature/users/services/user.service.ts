@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from '../models/user';
 
 @Injectable({
@@ -11,24 +12,24 @@ export class UserService {
 
   constructor(private http : HttpClient) { }
 
-  findAll = () => {
-    return this.http.get(this.baseUrl);
+  findAll = () : Observable<User[]> => {
+    return this.http.get<User[]>(this.baseUrl);
   }
 
-  findById = (id : string) => {
-    return this.http.get(`${this.baseUrl}/${id}`);
+  findById = (id : string) : Observable<User> => {
+    return this.http.get<User>(`${this.baseUrl}/${id}`);
   }
   
-  deleteById = (id : string) => {
-    return this.http.delete(`${this.baseUrl}/${id}`);
+  deleteById = (id : string) : Observable<User> => {
+    return this.http.delete<User>(`${this.baseUrl}/${id}`);
   }
 
-  save = (body : User) => {
-    return this.http.post(this.baseUrl, body);
+  save = (body : User) : Observable<User> => {
+    return this.http.post<User>(this.baseUrl, body);
   }
 
-  update = (body : User) => {
-    return this.http.patch(this.baseUrl, body);
+  update = (body : User) : Observable<User> => {
+    return this.http.patch<User>(this.baseUrl, body);
   }
 
 }
