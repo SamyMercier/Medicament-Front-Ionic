@@ -16,6 +16,10 @@ export class UserService {
     return this.http.get<User[]>(this.baseUrl);
   }
 
+  findAllByCompteId = (id : string) : Observable<User[]> => {
+    return this.http.get<User[]>(`${this.baseUrl}/${id}/utilisateurs`)
+  }
+
   findById = (id : string) : Observable<User> => {
     return this.http.get<User>(`${this.baseUrl}/${id}`);
   }
