@@ -13,16 +13,11 @@ export class UsersListComponent implements OnInit {
   users : User[];
   assistants : AssistantOuAssiste[];
 
-  constructor(userService:UserService) {
-    this.users=userService.findAll();
+  constructor() {
+    
   }
 
   ngOnInit(): void {
-  }
-
-  getFirstUserName = () => {
-    let firstUser = this.users[0];
-    return firstUser.nom;
   }
 
 }
