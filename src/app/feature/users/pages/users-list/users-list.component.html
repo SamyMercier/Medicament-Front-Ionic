@@ -3,7 +3,7 @@
 <div id="affichage">
     <div id="users-area" *ngIf="users">
         <p>Utilisateur(s) du compte</p>
-        <div class="profile" routerLink="/users/details/:id" *ngFor="let user of users">
+        <div class="profile" [routerLink]="['users/',user.id]" *ngFor="let user of users" (click)="showUrl(user.id)">
             <div class="profile-picture"></div>
             <span>{{user.nom}} {{user.prenom}}</span>
         </div>
@@ -26,3 +26,5 @@
         Retour
     </app-button-redirector>
 </div>
+
+<button (click)="getUserList()">Logs</button>

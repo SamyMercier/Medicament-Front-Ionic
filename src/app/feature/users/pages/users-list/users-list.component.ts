@@ -15,7 +15,6 @@ export class UsersListComponent implements OnInit {
   assistants : AssistantOuAssiste[];
   assistes : AssistantOuAssiste[];
 
-<<<<<<< Updated upstream
   constructor(
     private service : UserService,
     private router: Router
@@ -25,14 +24,14 @@ export class UsersListComponent implements OnInit {
     this.service.findAll().subscribe(
       (data:User[])=>this.users = data,
       console.error)
-=======
-  constructor(private service: UserService, private router : Router) {
   }
 
-  ngOnInit(): void {
-    this.service.findAll().subscribe((data:User[])=>this.users=data, console.error);
-  
->>>>>>> Stashed changes
+  getUserList = () => {
+    console.log(this.users);
+  }
+
+  showUrl = (id : String) => {
+    console.log("http://localhost:8080/users/"+id)
   }
 
 }
