@@ -7,7 +7,9 @@
             <p>Nom : {{medic.nom}}</p>
             <p>duree dateDebut: {{medic.dureeDto.dateDebut | date : 'dd/MM/yyyy'}}</p>
             <p>duree dateFin: {{medic.dureeDto.dateFin | date : 'dd/MM/yyyy'}}</p>
-            <p>freq : {{medic.frequenceDto.prises[0] | date : 'dd/MM/yyyy hh:mm'}}</p>
+            <p > {{medic.frequenceDto.prises[0] | date : 'dd/MM/yyyy hh:mm'}}</p>
+            <p> {{medic.frequenceDto.prises[1] | date : 'dd/MM/yyyy hh:mm'}}</p>
+            <p> {{medic.frequenceDto.prises[2] | date : 'dd/MM/yyyy hh:mm'}}</p>
             <app-button-redirector [routerLink]="['/medics/update', medic.id]">
                 Modifier
             </app-button-redirector>

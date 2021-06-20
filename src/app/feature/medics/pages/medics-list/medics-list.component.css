@@ -5,5 +5,12 @@
 }
 .medics{
     display: flex;
+    flex-wrap: wrap;
+    margin: 1em 1em;
+    border: solid #FF7D01;
+}
+.medic{
+    
     margin: 1em;
+    border: solid #FF4709;
 }
