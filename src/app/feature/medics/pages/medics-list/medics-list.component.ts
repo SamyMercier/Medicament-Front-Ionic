@@ -18,7 +18,6 @@ export class MedicsListComponent implements OnInit {
   ngOnInit(): void {
     this.medicService.getAll().subscribe(elems => {
       this.medics = elems;
-      console.log("MEDIC LIST THIS.MEDICS +>>>>>" + JSON.stringify(this.medics));
     });
 
   }

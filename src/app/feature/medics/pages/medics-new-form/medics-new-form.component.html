@@ -10,11 +10,6 @@
         </div>
         <div class="frequence">
             <button type="button" (click)="openFrequenceFormDialog()">frequence</button>
-            <div *ngIf="frequenceData[0]">
-                <div *ngFor='let freq of data'>
-                    {{freq.choixFrequence}}
-                </div>
-            </div>
         </div>
         <div formArrayName="heures" *ngFor="let he of medicForm.controls.heures?.value; let i = index; trackBy: trackByFn">
             <mat-form-field [attr.aria-label]="'heure'" [formGroupName]="i">

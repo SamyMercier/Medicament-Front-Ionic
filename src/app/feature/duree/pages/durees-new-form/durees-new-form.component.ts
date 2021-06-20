@@ -2,6 +2,7 @@ import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { DureeDataDto } from '../../models/duree-data-dto';
 
 @Component({
   selector: 'app-durees-new-form',
@@ -17,13 +18,16 @@ export class DureesNewFormComponent implements OnInit {
   dateNow: string;
   dateDebut: Date;
 
+  dureeDataDto : DureeDataDto;
+
   durees: string[] = ['Pas de fin', 'Jusque date', 'Pendant X jours'];
-  dataToReturn: string[] = [];
 
   constructor(
     private dialogRefFrequence: MatDialogRef<DureesNewFormComponent>,
     private fb: FormBuilder
   ) {
+
+    this.dureeDataDto = new DureeDataDto(null, null, null, null);
 
     this.dateNow = formatDate(new Date(), 'yyyy-MM-dd', 'en_US');
     this.dateDebut = new Date(this.dateNow);
@@ -42,9 +46,11 @@ export class DureesNewFormComponent implements OnInit {
   }
 
   saveDuree() {
-    console.log(this.dureeForm.value.dateFin)
-    this.dataToReturn.push(this.dureeForm.value)
-    this.dialogRefFrequence.close(this.dataToReturn);
+    this.dureeDataDto.choixDuree = this.dureeForm.value.choixDuree;
+    this.dureeDataDto.dateDebut = this.dureeForm.value.dateDebut;
+    this.dureeDataDto.dateFin = this.dureeForm.value.dateFin;
+    this.dureeDataDto.nbJour = this.dureeForm.value.nbJour;
+    this.dialogRefFrequence.close(this.dureeDataDto);
   }
 
   choixDureePasDeFin() {
