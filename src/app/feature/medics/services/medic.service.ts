@@ -13,26 +13,12 @@ import { MedicTmp } from '../models/medic-tmp';
 })
 export class MedicService {
 
-  duree1 = new Duree("dur1", 3, new Date());
-  duree2 = new Duree("dur2", 2, new Date('2021-08-07'));
-
-  freq1 = new Frequence("freq1",[new Date('2021-06-06')])
-  freq2 = new Frequence("freq1",[new Date('2021-06-06'),new Date('2021-06-07'),new Date('2021-06-08')])
-
-  medic1 = new Medic("med1","Doliprane",this.duree1,this.freq1);
-  medic2 = new Medic("med2","Econazole",this.duree2,this.freq2);
-
-  listeMedics = [this.medic1, this.medic2];
 
   constructor(private http : HttpClient) { }
 
   getAll = () : Observable<Medic[]> => {
     return this.http.get<Medic[]>(`${environment.urlSpring}/medics/`);
   }
-
-/*   getAll = () : Observable<Medic[]> => {
-    return this.http.get<Medic[]>(`${environment.urlSpring}/medics`);
-  } */
 
   getById = (id : String) : Observable<Medic> => {
     return this.http.get<Medic>(`${environment.urlSpring}/medics/${id}`);

@@ -6,17 +6,74 @@
             </mat-form-field>
         </div>
         <div class="duree">
-            <button type="button" (click)="openDureeFormDialog()">duree</button>
+            <div class="duree-button">
+                <button type="button" (click)="openDureeFormDialog()">duree</button>
+            </div>
+            <div class="duree-info">
+                <p>{{dureeDataDto.choixDuree}}</p>
+                <p>{{dureeDataDto.dateDebut | date : 'dd/MM/yyyy'}}</p>
+                <div class="duree-info-jusqueDate" *ngIf="choixDureeJusqueX()">
+                    <p>DateFin = {{dureeDataDto.dateFin | date : 'dd/MM/yyyy'}}</p>
+                </div>
+                <div class="duree-info-PendantX" *ngIf="choixDureePendantX()">
+                    <p>Nb = {{dureeDataDto.nbJour}}</p>
+                </div>
+            </div>
         </div>
+
         <div class="frequence">
-            <button type="button" (click)="openFrequenceFormDialog()">frequence</button>
+            <div class="frequence-bouton">
+                <button type="button" (click)="openFrequenceFormDialog()">frequence</button>
+            </div>
+            <div class="frequence-info">
+                <p>{{frequenceDataDto.choixFrequence}}</p>
+                <div class="frequence-info-ttsXHeures" *ngIf="choixFrequenceChaqueJoursTtsXHeures()">
+                    <p>{{frequenceDataDto.heureDebut}}</p>
+                    <p>{{frequenceDataDto.rappel}}</p>
+                    <p>{{frequenceDataDto.heureFin}}</p>
+                </div>
+                <div class="frequence-info-TtsXJours" *ngIf="choixFrequenceTtsxJours()">
+                    <p>x = {{frequenceDataDto.x}}</p>
+
+                </div>
+                <div class="frequence-info-certainsJours" *ngIf="choixFrequenceCertainsJours()">
+                    <div class="frequence-info-certainsJours-lundi" *ngIf="certainsJoursLundi()">
+                        Lundi
+                    </div>
+                    <div class="frequence-info-certainsJours-lundi" *ngIf="certainsJoursMardi()">
+                        Mardi
+                    </div>
+                    <div class="frequence-info-certainsJours-lundi" *ngIf="certainsJoursMercredi()">
+                        Mercredi
+                    </div>
+                    <div class="frequence-info-certainsJours-lundi" *ngIf="certainsJoursJeudi()">
+                        Jeudi
+                    </div>
+                    <div class="frequence-info-certainsJours-lundi" *ngIf="certainsJoursVendredi()">
+                        Vendredi
+                    </div>
+                    <div class="frequence-info-certainsJours-lundi" *ngIf="certainsJoursSamedi()">
+                        Samedi
+                    </div>
+                    <div class="frequence-info-certainsJours-lundi" *ngIf="certainsJoursDimanche()">
+                        Diamanche
+                    </div>
+                </div>
+            </div>
         </div>
-        <div formArrayName="heures" *ngFor="let he of medicForm.controls.heures?.value; let i = index; trackBy: trackByFn">
-            <mat-form-field [attr.aria-label]="'heure'" [formGroupName]="i">
-                <input name="heure" matInput type="time" formControlName="heure" placeholder="heure de prise" required>
-            </mat-form-field>
+
+        <div class="ajouter-heures" *ngIf="!choixFrequenceChaqueJoursTtsXHeures()">
+            <div class="ajouter-heures-bouton">
+                <button (click)="addHeures()">Ajouter heures</button>
+            </div>
+            <div class="ajouter-heures-form" formArrayName="heures"
+                *ngFor="let he of medicForm.controls.heures?.value; let i = index; trackBy: trackByFn">
+                <mat-form-field [attr.aria-label]="'heure'" [formGroupName]="i">
+                    <input name="heure" matInput type="time" formControlName="heure" placeholder="heure de prise"
+                        required>
+                </mat-form-field>
+            </div>
         </div>
-        <button (click)="addHeures()">Ajouter heures</button>
 
         <div>
             <button (click)="ajouter()">Save</button>

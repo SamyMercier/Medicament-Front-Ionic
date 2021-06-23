@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DureeDataDto } from '../../models/duree-data-dto';
+import { DureeService } from '../../service/duree.service';
 
 @Component({
   selector: 'app-durees-new-form',
@@ -24,7 +25,8 @@ export class DureesNewFormComponent implements OnInit {
 
   constructor(
     private dialogRefFrequence: MatDialogRef<DureesNewFormComponent>,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private dureeService: DureeService,
   ) {
 
     this.dureeDataDto = new DureeDataDto(null, null, null, null);
@@ -50,19 +52,20 @@ export class DureesNewFormComponent implements OnInit {
     this.dureeDataDto.dateDebut = this.dureeForm.value.dateDebut;
     this.dureeDataDto.dateFin = this.dureeForm.value.dateFin;
     this.dureeDataDto.nbJour = this.dureeForm.value.nbJour;
+    console.log(this.dureeDataDto)
     this.dialogRefFrequence.close(this.dureeDataDto);
   }
 
   choixDureePasDeFin() {
-    return this.dureeForm.value.choixDuree == this.durees[0];
+    return this.dureeForm.value.choixDuree == this.dureeService.PAS_DE_FIN;
   }
 
   choixDureeJusqueX() {
-    return this.dureeForm.value.choixDuree == this.durees[1];
+    return this.dureeForm.value.choixDuree == this.dureeService.JUSQUE_DATE;
   }
 
   choixDureePendantX() {
-    return this.dureeForm.value.choixDuree == this.durees[2];
+    return this.dureeForm.value.choixDuree == this.dureeService.PENDANT_X_JOURS;
   }
 
 }

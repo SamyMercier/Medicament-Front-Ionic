@@ -9,6 +9,8 @@ import { MedicTmp } from '../../models/medic-tmp';
 import { FrequenceDataDto } from 'src/app/feature/frequence/models/frequence-data-dto';
 import { DureeDataDto } from 'src/app/feature/duree/models/duree-data-dto';
 import { HoraireDataDto } from 'src/app/feature/frequence/models/horaire-data-dto';
+import { DureeService } from 'src/app/feature/duree/service/duree.service';
+import { FrequenceService } from 'src/app/feature/frequence/service/frequence.service';
 
 @Component({
   selector: 'app-medics-new-form',
@@ -29,6 +31,8 @@ export class MedicsNewFormComponent implements OnInit {
 
   constructor(
     private medicService: MedicService,
+    private dureeService: DureeService,
+    private frequenceService: FrequenceService,
     private fb: FormBuilder,
     private router: Router,
     private dialogRefDuree: MatDialogRef<DureesNewFormComponent>,
@@ -105,6 +109,56 @@ export class MedicsNewFormComponent implements OnInit {
 
   trackByFn(index) {
     return index;
+  }
+
+  choixDureePasDeFin() {
+    return this.dureeDataDto.choixDuree === this.dureeService.PAS_DE_FIN;
+  }
+
+  choixDureeJusqueX() {
+    return this.dureeDataDto.choixDuree === this.dureeService.JUSQUE_DATE;
+  }
+
+  choixDureePendantX() {
+    return this.dureeDataDto.choixDuree === this.dureeService.PENDANT_X_JOURS;
+  }
+
+  choixFrequenceChaqueJoursXParJour() {
+    return this.frequenceDataDto.choixFrequence === this.frequenceService.CHAQUE_JOURS_X_PAR_JOURS;
+  }
+
+  choixFrequenceChaqueJoursTtsXHeures() {
+    return this.frequenceDataDto.choixFrequence ===this.frequenceService.CHAQUE_JOURS_TTS_X_HEURES;
+  }
+
+  choixFrequenceTtsxJours() {
+    return this.frequenceDataDto.choixFrequence === this.frequenceService.TTS_X_JOURS;
+  }
+
+  choixFrequenceCertainsJours() {
+    return this.frequenceDataDto.choixFrequence === this.frequenceService.CERTAINS_JOURS;
+  }
+
+  certainsJoursLundi(){
+    return this.frequenceDataDto.lundi
+  }
+  certainsJoursMardi(){
+    return this.frequenceDataDto.mardi
+  }
+  certainsJoursMercredi(){
+    return this.frequenceDataDto.mercredi
+  }
+  certainsJoursJeudi(){
+    return this.frequenceDataDto.jeudi
+  }
+  certainsJoursVendredi(){
+    return this.frequenceDataDto.vendredi
+  }
+  certainsJoursSamedi(){
+    return this.frequenceDataDto.samedi
+  }
+  certainsJoursDimanche(){
+    return this.frequenceDataDto.dimanche
   }
 
 }

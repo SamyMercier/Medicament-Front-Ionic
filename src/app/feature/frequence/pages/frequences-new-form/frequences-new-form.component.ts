@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatRadioChange } from '@angular/material/radio';
 import { Frequence } from '../../models/frequence';
 import { FrequenceDataDto } from '../../models/frequence-data-dto';
+import { FrequenceService } from '../../service/frequence.service';
 
 @Component({
   selector: 'app-frequences-new-form',
@@ -29,6 +30,7 @@ export class FrequencesNewFormComponent implements OnInit {
   constructor(
     private dialogRefFrequence: MatDialogRef<FrequencesNewFormComponent>,
     private fb: FormBuilder,
+    private frequenceService : FrequenceService,
   ) {
     this.frequenceDataDto = new FrequenceDataDto(null,null,null,null,null,null,null,null,null,null,null,null);
 
@@ -99,19 +101,19 @@ export class FrequencesNewFormComponent implements OnInit {
   }
 
   choixFrequenceChaqueJoursXParJour() {
-    return this.frequenceForm.value.choixFrequence[0] === this.frequences[0];
+    return this.frequenceForm.value.choixFrequence[0] === this.frequenceService.CHAQUE_JOURS_X_PAR_JOURS;
   }
 
-  choixFrequenceChaqueJoursXParHeures() {
-    return this.frequenceForm.value.choixFrequence ===this.frequences[1];
+  choixFrequenceChaqueJoursTtsXHeures() {
+    return this.frequenceForm.value.choixFrequence ===this.frequenceService.CHAQUE_JOURS_TTS_X_HEURES;
   }
 
   choixFrequenceTtsxJours() {
-    return this.frequenceForm.value.choixFrequence === this.frequences[2];
+    return this.frequenceForm.value.choixFrequence === this.frequenceService.TTS_X_JOURS;
   }
 
   choixFrequenceCertainsJours() {
-    return this.frequenceForm.value.choixFrequence == this.frequences[3];
+    return this.frequenceForm.value.choixFrequence == this.frequenceService.CERTAINS_JOURS;
   }
 
 }

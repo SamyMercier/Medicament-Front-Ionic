@@ -3,3 +3,14 @@
     flex-direction: column;
     align-items: center;
 }
+
+
+.duree{
+    border: solid #F58CBA;
+}
+.frequence{
+    border: solid #9482C9;
+}
+.ajouter-heures{
+    border: solid #ABD473;
+}
