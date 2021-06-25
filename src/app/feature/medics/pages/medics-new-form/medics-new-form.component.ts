@@ -20,7 +20,6 @@ import { FrequenceService } from 'src/app/feature/frequence/service/frequence.se
 export class MedicsNewFormComponent implements OnInit {
 
   medicForm: FormGroup;
-  chaqueJourXHeuresForm: FormGroup;
   heures: FormArray;
 
   dureeDataDto : DureeDataDto;

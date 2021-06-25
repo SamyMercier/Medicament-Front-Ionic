@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -56,6 +56,7 @@ import { DureesEditFormComponent } from './feature/duree/pages/durees-edit-form/
 import { DureesNewFormComponent } from './feature/duree/pages/durees-new-form/durees-new-form.component';
 import { DureesListComponent } from './feature/duree/pages/durees-list/durees-list.component';
 import { DureesPagesComponent } from './feature/duree/pages/durees-pages/durees-pages.component';
+import { IonicModule } from '@ionic/angular';
 
 const modules = [
   MatButtonModule,
@@ -121,12 +122,13 @@ const modules = [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    [...modules]
+    IonicModule.forRoot()
   ],
   exports: [
     [...modules]
   ],
   providers: [{ provide: MatDialogRef, useValue: {} }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

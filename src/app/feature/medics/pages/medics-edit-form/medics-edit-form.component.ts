@@ -25,20 +25,23 @@ export class MedicsEditFormComponent implements OnInit {
     private router : Router,
     private route : ActivatedRoute
   ) {
+
+   }
+
+  ngOnInit(): void {
     let id : string ;
     this.route.paramMap.subscribe(params => {
        id = params.get("id");
        console.log("id => " + id);
        this.medicService.getById(id).subscribe(elem  => {
          this.medic = elem;
+         console.log(elem)
+         console.log(this.medic)
          this.medicForm = this.fb.group({
           nom : this.medic.nom,
         })
        })
     });
-   }
-
-  ngOnInit(): void {
   }
 
   modifier = () => {
