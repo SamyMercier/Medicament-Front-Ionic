@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Compte } from '../../compte/models/compte';
-import { CompteService } from '../../compte/services/compte.service';
+import { FormControl, FormGroup } from '@angular/forms';
 import { AuthHttpService } from '../services/auth-http.service';
 
 @Component({
@@ -19,13 +16,33 @@ export class ConnexionComponent implements OnInit {
 
   form:FormGroup;
 
-  constructor(private service:AuthHttpService, private router:Router) {}
+  /**
+   * Constructeur
+   * @param service
+   */
+  constructor(private service:AuthHttpService) {}
   
+  /**
+   * Cette méthode permet d'initiliaser du formulaire à zéro au démarage du composant
+   */
   ngOnInit(): void {
     this.form= new FormGroup({
       email: new FormControl(""),
       motDePasse: new FormControl("")
     })
+  }
+
+  /**
+   * Cette méthode permet de récupérer les données du formulaire, 
+   * et ajoute dans le local storage l'id du compte
+   */
+  onSubmit(){
+    this.service.connexion(this.form.value).subscribe((compteId:string)=>{
+      localStorage.setItem("compteId", compteId);
+      window.location.href = "home";
+    }, (err)=>{
+        return; // redirection vers la page d'authentification
+    });
   }
 
 }
