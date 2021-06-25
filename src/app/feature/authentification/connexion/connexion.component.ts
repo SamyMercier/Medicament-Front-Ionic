@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Compte } from '../../compte/models/compte';
 import { CompteService } from '../../compte/services/compte.service';
+import { AuthHttpService } from '../services/auth-http.service';
 
 @Component({
   selector: 'app-connexion',
@@ -16,34 +17,15 @@ import { CompteService } from '../../compte/services/compte.service';
  */
 export class ConnexionComponent implements OnInit {
 
-  connexionForm : FormGroup;
+  form:FormGroup;
 
-  compte : Compte = new Compte(0, "" , "", []);
-
-  constructor(
-    private service : CompteService, 
-    private fb : FormBuilder, 
-    private router : Router
-    ) { 
-      this.connexionForm = this.fb.group({
-        email : "",
-        motDePasse : ""
-      })
-    }
+  constructor(private service:AuthHttpService, private router:Router) {}
   
-  ngOnInit(): void {}
-
-  /**
-   * Cette méthode permet de vérifier si un compte existe
-   */
-  verifierCompteExiste = () => {
-    let email = this.connexionForm.value.email;
-    let motDePasse = this.connexionForm.value.motDePasse;
-    let compteRecupere = this.service.findByEmail(email);
-    console.log(motDePasse + " " +compteRecupere.motDePasse);
-    if(compteRecupere.email === email && compteRecupere.motDePasse === motDePasse) {
-      this.router.navigate(["/home"]);
-    }
+  ngOnInit(): void {
+    this.form= new FormGroup({
+      email: new FormControl(""),
+      motDePasse: new FormControl("")
+    })
   }
 
 }
