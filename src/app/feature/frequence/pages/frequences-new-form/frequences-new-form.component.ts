@@ -24,7 +24,8 @@ export class FrequencesNewFormComponent implements OnInit {
   CertainsJoursForm: FormGroup;
 
   choixFrequence: string = "";
-  frequences: string[] = ["Chaque jours X par jours", "Chaque jours toutes les X heures", "Tous les X jours", "Certains jours"];
+  frequences: string[] = [this.frequenceService.CHAQUE_JOURS_X_PAR_JOURS, this.frequenceService.CHAQUE_JOURS_TTS_X_HEURES,
+     this.frequenceService.TTS_X_JOURS,this.frequenceService.CERTAINS_JOURS];
 
   frequenceDataDto: FrequenceDataDto;
 
@@ -37,7 +38,7 @@ export class FrequencesNewFormComponent implements OnInit {
 
 
     this.frequenceForm = this.fb.group({
-      choixFrequence: "",
+      choixFrequence: new FormControl(),
 
       x: new FormControl(),
 
