@@ -90,9 +90,9 @@ export class MedicsNewFormComponent implements OnInit {
     });
 
     console.log("AJOUTER => " +JSON.stringify(this.medicTmp));
-/*     this.medicService.create(this.medicTmp).subscribe(medic => {
+     this.medicService.create(this.medicTmp).subscribe(medic => {
       this.router.navigate(["/medics"]);
-    }); */
+    }); 
   }
 
   addHeures() {

@@ -12,15 +12,15 @@
                 <ion-item class="form-chaqueJourXHeures">
                     <form [formGroup]="frequenceForm">
                         <ion-item>
-                            <ion-label>Heure de Debut</ion-label>
+                            <ion-label>Heure de Debut : </ion-label>
                             <ion-datetime displayFormat="HH:mm" formControlName="heureDebut"></ion-datetime>
                         </ion-item>
                         <ion-item>
-                            <ion-label>Rappel</ion-label>
+                            <ion-label>Rappel : </ion-label>
                             <ion-datetime displayFormat="HH:mm" formControlName="rappel"></ion-datetime>
                         </ion-item>
                         <ion-item>
-                            <ion-label>Heure de Fin</ion-label>
+                            <ion-label>Heure de Fin : </ion-label>
                             <ion-datetime displayFormat="HH:mm" formControlName="heureFin"></ion-datetime>
                         </ion-item>
                     </form>
@@ -37,31 +37,31 @@
                 <form class="CertainsJours" [formGroup]="frequenceForm">
                     <ion-item>
                         <ion-checkbox checked="true" color="dark" formControlName="lundi"></ion-checkbox>
-                        <ion-label> Lundi</ion-label>
+                        <ion-label> : Lundi</ion-label>
                     </ion-item>
                     <ion-item>
                         <ion-checkbox checked="true" color="dark" formControlName="mardi"></ion-checkbox>
-                        <ion-label> Mardi</ion-label>
+                        <ion-label> : Mardi</ion-label>
                     </ion-item>
                     <ion-item>
                         <ion-checkbox checked="true" color="dark" formControlName="mercredi"></ion-checkbox>
-                        <ion-label> Mercredi</ion-label>
+                        <ion-label> : Mercredi</ion-label>
                     </ion-item>
                     <ion-item>
                         <ion-checkbox checked="true" color="dark" formControlName="jeudi"></ion-checkbox>
-                        <ion-label> Jeudi</ion-label>
+                        <ion-label> : Jeudi</ion-label>
                     </ion-item>
                     <ion-item>
                         <ion-checkbox checked="true" color="dark" formControlName="vendredi"></ion-checkbox>
-                        <ion-label> Vendredi</ion-label>
+                        <ion-label> : Vendredi</ion-label>
                     </ion-item>
                     <ion-item>
                         <ion-checkbox checked="true" color="dark" formControlName="samedi"></ion-checkbox>
-                        <ion-label> Samedi</ion-label>
+                        <ion-label> : Samedi</ion-label>
                     </ion-item>
                     <ion-item>
                         <ion-checkbox checked="true" color="dark" formControlName="dimanche"></ion-checkbox>
-                        <ion-label> Dimanche</ion-label>
+                        <ion-label> : Dimanche</ion-label>
                     </ion-item>
                     
                 </form>

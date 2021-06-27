@@ -1,39 +1,40 @@
-<h1 mat-dialog-title>Choisir la duree du medicament</h1>
-<div mat-dialog-content>
-    <div class="formRadio">
-        <form [formGroup]="dureeForm" novalidate>
-            <mat-form-field [attr.aria-label]="'Date de debut'">
-                <input name="dateDebut" matInput type="date" formControlName="dateDebut" placeholder="date de debut">
-            </mat-form-field>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-                formControlName="choixDuree">
-                <mat-radio-button class="example-radio-button" *ngFor="let duree of durees" [value]="duree" >
-                    {{duree}}
-                </mat-radio-button>
-            </mat-radio-group>
+<ion-content class="content">
+    <form class="form" [formGroup]="dureeForm" >
+        <ion-item>
+            <ion-label>Date de debut</ion-label>
+            <ion-datetime displayFormat="DD:MM:YYYY" formControlName="dateDebut"></ion-datetime>
+        </ion-item>
 
-            <div class="classInput">
-                <div class="jusqueX" *ngIf="choixDureeJusqueX()">
-                    <form [formGroup]="dureeForm">
-                        <mat-form-field [attr.aria-label]="'jusquau :'">
-                            <input name="dateFin" matInput type="date" formControlName="dateFin" placeholder="jusqu'au">
-                        </mat-form-field>
-                    </form>
-                </div>
-                <div class="pendantX" *ngIf="choixDureePendantX()">
-                    <form [formGroup]="dureeForm">
-                        <mat-form-field [attr.aria-label]="'Pendant :'">
-                            <input name="nbJour" matInput type="number" formControlName="nbJour" placeholder="2 jours">
-                        </mat-form-field>
-                    </form>
-                </div>
-            </div>
-        </form>
-    </div>
+        <ion-radio-group formControlName="choixDuree">
+            <ion-item *ngFor="let duree of durees">
+                <ion-label>{{duree}}</ion-label>
+                <ion-radio value="{{duree}}"></ion-radio>
+            </ion-item>
+        </ion-radio-group>
 
-</div>
-<div mat-dialog-actions align="end">
-    <ion-button (click)="dismiss()">Annuler</ion-button>
-    <ion-button (click)="dismissSave()">Save</ion-button>
-</div>
+        <ion-item class="classInput">
+            <ng-container class="jusqueX" *ngIf="choixDureeJusqueX()">
+                <form [formGroup]="dureeForm">
+                    <ion-item>
+                        <ion-label>Date de Fin : </ion-label>
+                        <ion-datetime displayFormat="DD:MM:YYYY" formControlName="dateFin"></ion-datetime>
+                    </ion-item>
+                </form>
+            </ng-container>
 
+            <ng-container  class="pendantX" *ngIf="choixDureePendantX()">
+                <form [formGroup]="dureeForm">
+                    <ion-item>
+                        <ion-label>Nombre de jours : </ion-label>
+                        <ion-input type="number" formControlName="nbJour"></ion-input>
+                    </ion-item>
+                </form>
+            </ng-container>
+        </ion-item>
+
+    </form>
+    <ion-item class="buttons">
+        <ion-button (click)="dismiss()">Annuler</ion-button>
+        <ion-button (click)="dismissSave()">Save</ion-button>
+    </ion-item>
+</ion-content>
