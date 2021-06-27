@@ -2,7 +2,7 @@
     <form class="form" [formGroup]="medicForm">
         <ion-card class="card-container">
             <ion-card-header>
-                <p>Medicament</p>
+                <h1>Ajouter un médicament</h1>
             </ion-card-header>
 
             <ion-card-content class="content">
@@ -57,15 +57,15 @@
                         <ng-container *ngIf="!choixFrequenceChaqueJoursTtsXHeures()">
 
                             <ion-item class="ajouter-heures-button">
-                                <button (click)="addHeures()">Ajouter heures</button>
+                                <ion-button (click)="addHeures()">Ajouter heures</ion-button>
                             </ion-item>
     
                             <ion-item class="ajouter-heure-form" formArrayName="heures"
                                 *ngFor="let he of medicForm.controls.heures?.value; let i = index; trackBy: trackByFn">
                                 <ion-item [formGroupName]="i">
-                                    <ion-input name="heure" type="time" formControlName="heure"
-                                        placeholder="heure de prise">
-                                    </ion-input>
+                                    <ion-label>Heure</ion-label>
+                                    <ion-datetime displayFormat="HH:mm" formControlName="heure"></ion-datetime>
+                                        
                                 </ion-item>
                             </ion-item>
     
