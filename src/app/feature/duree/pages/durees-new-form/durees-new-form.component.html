@@ -33,7 +33,7 @@
 
 </div>
 <div mat-dialog-actions align="end">
-    <button type="button" mat-raised-button mat-dialog-close [attr.aria-label]="'Annuler'">Cancel</button>
-    <button type="button" mat-raised-button (click)="saveDuree()" [attr.aria-label]="'Enregistrer médicament'"
-        [disabled]="dureeForm.invalid">Save</button>
+    <ion-button (click)="dismiss()">Annuler</ion-button>
+    <ion-button (click)="dismissSave()">Save</ion-button>
 </div>
+
