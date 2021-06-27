@@ -1,7 +1,7 @@
 <ion-content class="container">
     <div class="medics">
         <div class="medic" *ngFor="let medic of medics">
-            <ion-card>
+            <ion-card (click)="goToUpdate(medic.id)">
                 <ion-card-header>
                     <ion-card-title>{{medic.nom}}</ion-card-title>
                 </ion-card-header>
@@ -13,7 +13,6 @@
                         <ion-item>1er prise : {{medic.frequenceDto.prises[0] | date : 'dd/MM/yyyy hh:mm'}}</ion-item>
                         <ion-item>2e prise : {{medic.frequenceDto.prises[1] | date : 'dd/MM/yyyy hh:mm'}}</ion-item>
                         <ion-item>3eprise : {{medic.frequenceDto.prises[2] | date : 'dd/MM/yyyy hh:mm'}}</ion-item>
-                        <ion-button [routerLink]="['/medics/update', medic.id]">Modifier</ion-button>
                     </ion-list>
                 </ion-card-content>
             </ion-card>

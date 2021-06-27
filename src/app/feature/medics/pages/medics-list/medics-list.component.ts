@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Medic } from '../../models/medic';
 import { MedicService } from '../../services/medic.service';
 
@@ -13,14 +14,18 @@ export class MedicsListComponent implements OnInit {
 
   medics: Medic[];
 
-  constructor(private medicService: MedicService) { }
+  constructor(private medicService: MedicService, private router: Router) { }
 
   ngOnInit(): void {
     this.medicService.getAll().subscribe(elems => {
       console.log(elems);
       this.medics = elems;
     });
-
   }
+
+  goToUpdate(id: string){
+    console.log(id)
+     this.router.navigateByUrl('/medics/update/' + id,{})
+   }
 
 }
