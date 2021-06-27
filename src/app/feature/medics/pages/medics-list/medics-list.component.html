@@ -1,3 +1,28 @@
+<ion-content class="container">
+    <div class="medics">
+        <div class="medic" *ngFor="let medic of medics">
+            <ion-card>
+                <ion-card-header>
+                  <ion-card-title>{{medic.nom}}</ion-card-title>
+                </ion-card-header>
+                
+                <ion-card-content>
+                    <ion-list>
+                        <ion-item>dateDebut : {{medic.dureeDto.dateDebut | date : 'dd/MM/yyyy'}}</ion-item>
+                        <ion-item>dateFin : {{medic.dureeDto.dateFin | date : 'dd/MM/yyyy'}}</ion-item>
+                        <ion-item>1er prise : {{medic.frequenceDto.prises[0] | date : 'dd/MM/yyyy hh:mm'}}</ion-item>
+                        <ion-item>2e prise : {{medic.frequenceDto.prises[1] | date : 'dd/MM/yyyy hh:mm'}}</ion-item>
+                        <ion-item>3eprise : {{medic.frequenceDto.prises[2] | date : 'dd/MM/yyyy hh:mm'}}</ion-item>
+                    </ion-list>
+                </ion-card-content>
+              </ion-card>
+            <ion-button [routerLink]="['/medics/update', medic.id]">Modifier</ion-button>
+        </div>
+    </div>
+    
+
+</ion-content>
+<!-- 
 <div class="container">
     <h2>Liste des médicaments</h2>
 
@@ -30,4 +55,4 @@
     <app-button-redirector routerLink="/home">
         /home
     </app-button-redirector>
-</div>
+</div> -->
