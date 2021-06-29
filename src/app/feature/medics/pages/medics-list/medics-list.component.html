@@ -1,33 +1,32 @@
-<div class="container">
-    <h2>Liste des médicaments</h2>
-
+<ion-content class="container">
     <div class="medics">
         <div class="medic" *ngFor="let medic of medics">
-            <p>ID : {{medic.id}}</p>
-            <p>Nom : {{medic.nom}}</p>
-            <p>duree dateDebut: {{medic.dureeDto.dateDebut | date : 'dd/MM/yyyy'}}</p>
-            <p>duree dateFin: {{medic.dureeDto.dateFin | date : 'dd/MM/yyyy'}}</p>
-            <p > {{medic.frequenceDto.prises[0] | date : 'dd/MM/yyyy hh:mm'}}</p>
-            <p> {{medic.frequenceDto.prises[1] | date : 'dd/MM/yyyy hh:mm'}}</p>
-            <p> {{medic.frequenceDto.prises[2] | date : 'dd/MM/yyyy hh:mm'}}</p>
-            <app-button-redirector [routerLink]="['/medics/update', medic.id]">
-                Modifier
-            </app-button-redirector>
+            <ion-card (click)="goToUpdate(medic.id)">
+                <ion-card-header>
+                    <ion-card-title>{{medic.nom}}</ion-card-title>
+                </ion-card-header>
+
+                <ion-card-content>
+                    <ion-list>
+                        <ion-item>dateDebut : {{medic.dureeDto.dateDebut | date : 'dd/MM/yyyy'}}</ion-item>
+                        <ion-item>dateFin : {{medic.dureeDto.dateFin | date : 'dd/MM/yyyy'}}</ion-item>
+                        <ion-item>1er prise : {{medic.frequenceDto.prises[0] | date : 'dd/MM/yyyy hh:mm'}}</ion-item>
+                        <ion-item>2e prise : {{medic.frequenceDto.prises[1] | date : 'dd/MM/yyyy hh:mm'}}</ion-item>
+                        <ion-item>3eprise : {{medic.frequenceDto.prises[2] | date : 'dd/MM/yyyy hh:mm'}}</ion-item>
+                    </ion-list>
+                </ion-card-content>
+            </ion-card>
         </div>
     </div>
-</div>
-<div>
-    <app-button-redirector [routerLink]="'/medics/create'">
-        ajouter medic
-    </app-button-redirector>
-</div>
-
-
-<div class="button">
-    <app-button-redirector routerLink="/medics">
-        /medics
-    </app-button-redirector>
-    <app-button-redirector routerLink="/home">
-        /home
-    </app-button-redirector>
-</div>
+    <div class="button">
+        <app-button-redirector [routerLink]="'/medics/create'">
+            ajouter medic
+        </app-button-redirector>
+        <app-button-redirector routerLink="/medics">
+            /medics
+        </app-button-redirector>
+        <app-button-redirector routerLink="/home">
+            /home
+        </app-button-redirector>
+    </div> -->
+</ion-content>

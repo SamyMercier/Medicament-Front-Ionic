@@ -1,13 +1,5 @@
-.example-radio-group {
-    display: flex;
-    flex-direction: column;
-    margin: 15px 0;
-  }
-  
-  .example-radio-button {
-    margin: 5px;
-  }
-  .CertainsJours{
-    display: flex;
-    flex-direction: column;
-  }
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

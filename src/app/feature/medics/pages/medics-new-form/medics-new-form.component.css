@@ -2,15 +2,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
-
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .duree{
-    border: solid #F58CBA;
+    width: 100%;
 }
+.duree-info{
+    display: flex;
+    flex-direction: column;
+}
+
 .frequence{
-    border: solid #9482C9;
+    width: 100%;
 }
-.ajouter-heures{
-    border: solid #ABD473;
+.frequence-info{
+    display: flex;
+    flex-direction: column;
+}
+.heures{
+    width: 100%;
 }

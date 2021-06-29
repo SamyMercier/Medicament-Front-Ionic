@@ -5,6 +5,9 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { DureeDataDto } from '../../models/duree-data-dto';
 import { DureeService } from '../../service/duree.service';
 
+import { ModalController } from '@ionic/angular';
+
+
 @Component({
   selector: 'app-durees-new-form',
   templateUrl: './durees-new-form.component.html',
@@ -19,12 +22,13 @@ export class DureesNewFormComponent implements OnInit {
   dateNow: string;
   dateDebut: Date;
 
-  dureeDataDto : DureeDataDto;
+  dureeDataDto: DureeDataDto;
 
   durees: string[] = ['Pas de fin', 'Jusque date', 'Pendant X jours'];
 
   constructor(
-    private dialogRefFrequence: MatDialogRef<DureesNewFormComponent>,
+    private viewCtrl: ModalController,
+
     private fb: FormBuilder,
     private dureeService: DureeService,
   ) {
@@ -37,23 +41,26 @@ export class DureesNewFormComponent implements OnInit {
     this.dureeForm = this.fb.group({
       dateDebut: new FormControl(this.dateNow),
       choixDuree: new FormControl(),
-      dateFin: new FormControl(),      
+      dateFin: new FormControl(),
       nbJour: new FormControl(),
     });
 
-   }
+  }
 
   ngOnInit(): void {
 
   }
+  
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
 
-  saveDuree() {
+  dismissSave() {
     this.dureeDataDto.choixDuree = this.dureeForm.value.choixDuree;
     this.dureeDataDto.dateDebut = this.dureeForm.value.dateDebut;
     this.dureeDataDto.dateFin = this.dureeForm.value.dateFin;
     this.dureeDataDto.nbJour = this.dureeForm.value.nbJour;
-    console.log(this.dureeDataDto)
-    this.dialogRefFrequence.close(this.dureeDataDto);
+    this.viewCtrl.dismiss(this.dureeDataDto);
   }
 
   choixDureePasDeFin() {
