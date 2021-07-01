@@ -1,35 +1,5 @@
-
-span{
-    font-size: 20px;
-    font-weight: bold;
-    color:white;
-    padding-left: 20px;
-}
-
-.profile{
-    display: flex;
-    align-items: center;
-    padding:10px 20px 10px 10px;
-}
-
-button{
-    background-color: #408DC5;
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 50px;
-    font-size: 20px;
-}
-
 ion-avatar.ion-label{
     display: inline-block;
-}
-
-ion-avatar {
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 h1{

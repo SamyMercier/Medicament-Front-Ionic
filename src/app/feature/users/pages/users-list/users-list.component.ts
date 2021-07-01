@@ -29,8 +29,7 @@ export class UsersListComponent implements OnInit {
       (data: User[]) => this.users = data,
       console.error)
     if (this.utilisateurIdSession === undefined) {
-      this.updateAssistantsAvecCompteId();
-      this.updateAssistesAvecCompteId();  
+     
     }else {
       this.updateAssistantsAvecUtilisateurId();
       this.updateAssistesAvecUtilisateurId();
@@ -48,8 +47,6 @@ export class UsersListComponent implements OnInit {
     this.utilisateurIdSession = undefined;
     this.assistants = [];
     this.assistes = [];
-    this.updateAssistantsAvecCompteId();
-    this.updateAssistesAvecCompteId();  
     itemSliding.close()
   }
 
