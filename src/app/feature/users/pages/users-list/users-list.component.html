@@ -7,10 +7,11 @@
             <ion-card-title>Utilisateur(s) du compte</ion-card-title>
         </ion-card-header>
         <ion-list *ngFor="let user of users">
-            <ion-item-sliding #item>
+            <ion-item-sliding #itemSliding>
                 <ion-item>
                     <ion-icon name="person-circle"></ion-icon>
                     <ion-text>{{user.nom}} {{user.prenom}}</ion-text>
+                    <ion-text *ngIf="user.id == this.utilisateurIdSession"> (connecté)</ion-text>
                 </ion-item>
                 <ion-item-options side="end">
                     <ion-item-option color="medium">
@@ -19,21 +20,41 @@
                 </ion-item-options>
                 <ion-item-options side="start">
                     <ion-item-option *ngIf="user.id != this.utilisateurIdSession" color="success"
-                        (click)="changerUtilisateur(user.id, item)">
+                        (click)="changerUtilisateur(user.id, itemSliding)">
                         <ion-icon name="log-in-outline"></ion-icon>
+                    </ion-item-option>
+                    <ion-item-option *ngIf="user.id == this.utilisateurIdSession" color="danger"
+                        (click)="seDeconnecter(itemSliding)">
+                        <ion-icon name="log-out-outline"></ion-icon>
                     </ion-item-option>
                 </ion-item-options>
             </ion-item-sliding>
         </ion-list>
     </ion-card>
-    <ion-card>
+    <ion-card *ngIf="this.assistants.length > 0">
         <ion-card-header color="tertiary">
             <ion-card-title>Assistant(s) des utilisateurs</ion-card-title>
         </ion-card-header>
         <ion-list *ngFor="let assistant of assistants">
             <ion-item>
                 <ion-icon name="person-circle"></ion-icon>
-                <ion-text>{{assistant.nom}}</ion-text>
+                <ion-text>{{assistant.nom}} {{assistant.prenom}}</ion-text>
+            </ion-item>
+            <ion-item-options side="end">
+                <ion-item-option color="danger">
+                    <ion-icon name="trash"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+        </ion-list>
+    </ion-card>
+    <ion-card *ngIf="this.assistes.length > 0">
+        <ion-card-header color="tertiary">
+            <ion-card-title>Assisté(s) des utilisateurs</ion-card-title>
+        </ion-card-header>
+        <ion-list *ngFor="let assiste of assistes">
+            <ion-item>
+                <ion-icon name="person-circle"></ion-icon>
+                <ion-text>{{assiste.nom}} {{assiste.prenom}}</ion-text>
             </ion-item>
             <ion-item-options side="end">
                 <ion-item-option color="danger">

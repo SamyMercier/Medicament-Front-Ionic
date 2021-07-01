@@ -12,27 +12,68 @@ import { UserService } from '../../services/user.service';
 })
 export class UsersListComponent implements OnInit {
 
-  compteIdSession : string = "60bf6ba371add870faebfc20";
-  utilisateurIdSession: string = "60c7089d62cc546af3942df3";
+  compteIdSession: string = "60d33cc7d6a0c74f0c8f0936";
+  utilisateurIdSession: string;
 
-  users : User[];
-  assistants : AssistantOuAssiste[];
-  assistes : AssistantOuAssiste[];
+  users: User[] = [];
+  assistants: AssistantOuAssiste[] = [];
+  assistes: AssistantOuAssiste[] = [];
 
   constructor(
-    private service : UserService,
+    private service: UserService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.service.findAllByCompteId(this.compteIdSession).subscribe(
-      (data:User[])=>this.users = data,
+      (data: User[]) => this.users = data,
+      console.error)
+    if (this.utilisateurIdSession === undefined) {
+      this.updateAssistantsAvecCompteId();
+      this.updateAssistesAvecCompteId();  
+    }else {
+      this.updateAssistantsAvecUtilisateurId();
+      this.updateAssistesAvecUtilisateurId();
+    }
+  }
+
+  changerUtilisateur = (utilisateurId: string, itemSliding: IonItemSliding) => {
+    this.utilisateurIdSession = utilisateurId;
+    itemSliding.close()
+    this.updateAssistantsAvecUtilisateurId();
+    this.updateAssistesAvecUtilisateurId();
+  }
+
+  seDeconnecter = (itemSliding: IonItemSliding) => {
+    this.utilisateurIdSession = undefined;
+    this.assistants = [];
+    this.assistes = [];
+    this.updateAssistantsAvecCompteId();
+    this.updateAssistesAvecCompteId();  
+    itemSliding.close()
+  }
+
+  updateAssistantsAvecCompteId = () => {
+    this.service.findAllAssistantsByCompteId(this.compteIdSession).subscribe(
+      (data: AssistantOuAssiste[]) => this.assistants = data,
       console.error)
   }
 
-  changerUtilisateur = (utilisateurId : string, itemSliding: IonItemSliding) =>{
-    this.utilisateurIdSession = utilisateurId;
-    console.log(this.utilisateurIdSession);
-    itemSliding.close()
+  updateAssistesAvecCompteId = () => {
+    this.service.findAllAssistesByCompteId(this.compteIdSession).subscribe(
+      (data: AssistantOuAssiste[]) => this.assistes = data,
+      console.error)
+  }
+
+  updateAssistantsAvecUtilisateurId = () => {
+    this.service.findAllAssistantsByUtilisateurId(this.utilisateurIdSession).subscribe(
+      (data: AssistantOuAssiste[]) => this.assistants = data,
+      console.error)
+  }
+
+  updateAssistesAvecUtilisateurId = () => {
+    this.service.findAllAssistesByUtilisateurId(this.utilisateurIdSession).subscribe(
+      (data: AssistantOuAssiste[]) => this.assistes = data,
+      console.error)
   }
 }
