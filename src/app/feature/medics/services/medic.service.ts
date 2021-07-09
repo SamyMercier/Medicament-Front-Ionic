@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { MedicTmp } from '../models/medic-tmp';
+import { InfoMedic } from '../models/info-medic';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,10 @@ export class MedicService {
 
   getByNom = (nom : String) : Observable<Medic> => {
     return this.http.get<Medic>(`${environment.urlSpring}/medics/nom/${nom}`);
+  }
+
+  getInfoMedic = (id: String): Observable<InfoMedic> => {
+    return this.http.get<InfoMedic>(`${environment.urlSpring}/infoMedics/${id}}`)
   }
 
   //PATCH si vous avez mis PATCH dans le back
