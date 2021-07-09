@@ -19,7 +19,7 @@
             <ion-label>
                 <h1>Anniversaire :</h1>
             </ion-label>
-            <ion-datetime required="true" displayFormat="DD/MM/YYYY" formControlName="dateNaissance"></ion-datetime>
+            <ion-datetime cancel-text="Annuler" done-text="Valider"  required="true" displayFormat="DD/MM/YYYY" formControlName="dateNaissance"></ion-datetime>
         </ion-item>
     </form>
     <ion-button color="success" expand="full" size="large" type="submit" ng-disabled="newUserForm.$invalid">Créer un
