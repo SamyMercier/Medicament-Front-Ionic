@@ -64,8 +64,7 @@
                                 *ngFor="let he of medicForm.controls.heures?.value; let i = index; trackBy: trackByFn">
                                 <ion-item [formGroupName]="i">
                                     <ion-label>Heure</ion-label>
-                                    <ion-datetime displayFormat="HH:mm" formControlName="heure"></ion-datetime>
-                                        
+                                    <ion-datetime displayFormat="hh:mm" formControlName="heure"></ion-datetime>
                                 </ion-item>
                             </ion-item>
     

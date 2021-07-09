@@ -30,13 +30,13 @@ export class MedicService {
   }
 
   getInfoMedic = (id: String): Observable<InfoMedic> => {
-    return this.http.get<InfoMedic>(`${environment.urlSpring}/infoMedics/${id}}`)
+    return this.http.get<InfoMedic>(`${environment.urlSpring}/medics/informations/${id}`)
   }
 
   //PATCH si vous avez mis PATCH dans le back
   //PUT si vous avez mis PUT dans le back
-  update = (parc : Medic) : Observable<Medic> => {
-    return this.http.patch<Medic>(`${environment.urlSpring}/medics`, parc);
+  update = (medic : MedicTmp) : Observable<MedicTmp> => {
+    return this.http.patch<MedicTmp>(`${environment.urlSpring}/medics`, medic);
   }
 
   create = (medic: MedicTmp) : Observable<Medic> => {
