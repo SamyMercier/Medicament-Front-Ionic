@@ -1,5 +1,5 @@
 <ion-content color="primary">
-    <ion-text>
+    <ion-text color="dark">
         <h1>Medical</h1>
     </ion-text>
     <ion-card *ngIf="this.users.length > 0">
@@ -64,14 +64,7 @@
         </ion-list>
     </ion-card>
 
+    <ion-button expand="full" size="large" color="light" routerLink="/utilisateurs/create">Ajouter un utilisateur</ion-button>
+    <ion-button expand="full" size="large" color="light" routerLink="/home">Retour</ion-button>
+
 </ion-content>
-
-
-<div id="button-container">
-    <app-button-redirector routerLink="/utilisateurs/create">
-        Ajouter un utilisateur
-    </app-button-redirector>
-    <app-button-redirector routerLink="/home">
-        Retour
-    </app-button-redirector>
-</div>

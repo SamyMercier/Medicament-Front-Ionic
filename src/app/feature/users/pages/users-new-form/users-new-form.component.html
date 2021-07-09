@@ -1,24 +1,31 @@
-<h1>Medical.</h1>
-
-<h2>Créer un utilisateur</h2>
-
-<div id="container"> 
-    <form [formGroup]="userProfile" (ngSubmit)="inscription()">
-        <label> Nom :
-            <input type="text" class="to-uppercase" formControlName="nom">
-        </label>
-        <label> Prenom :
-            <input type="text" formControlName="prenom">
-        </label>
-        <label> Date de naissance :
-            <input type="date" placeholder="jour/mois/année" formControlName="dateDeNaissance">
-        </label>
-
-        <button type="submit">Créer un utilisateur</button>
+<ion-toolbar color="primary">
+    <ion-title>Créer un nouvel utilisateur</ion-title>
+</ion-toolbar>
+<ion-content color="primary">    
+    <form [formGroup]="userProfile" (ngSubmit)="inscription()" name="newUserForm">
+        <ion-item>
+            <ion-label>
+                <h1>Nom :</h1>
+            </ion-label>
+            <ion-input type="text" maxlength="100" required="true" formControlName="nom"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                <h1>Prenom :</h1>
+            </ion-label>
+            <ion-input type="text" maxlength="100" required="true" formControlName="prenom"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                <h1>Anniversaire :</h1>
+            </ion-label>
+            <ion-datetime required="true" displayFormat="DD/MM/YYYY" formControlName="dateNaissance"></ion-datetime>
+        </ion-item>
     </form>
-    <app-button-redirector routerLink="/utilisateurs">
-        Retour
-    </app-button-redirector>
+    <ion-button color="success" expand="full" size="large" type="submit" ng-disabled="newUserForm.$invalid">Créer un
+            utilisateur</ion-button>
+    <ion-button color="danger" expand="full" size="large" routerLink="/utilisateurs">Retour</ion-button>
 
-</div>
+</ion-content>
+
 
