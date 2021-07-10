@@ -1,26 +1,15 @@
-<!--Ajoutez vos boutons pour rediréger ici, ils seront retirer plus tard car ils servent uniquement pour le test de l'application-->
-<app-button-redirector routerLink="/utilisateurs">
-    Vers /users
-</app-button-redirector>
-
-<app-button-redirector routerLink="/medics">
-    Vers /medics
-</app-button-redirector>
-
-<app-button-redirector routerLink="/404">
-    Vers /404
-</app-button-redirector>
-
-<app-button-redirector routerLink="/connexion">
-    Vers /connexion
-</app-button-redirector>
-
-<app-button-redirector routerLink="/inscription">
-    Vers /inscription
-</app-button-redirector>
-<app-button-redirector routerLink="/mdp_oublie">
-    Vers /mdp_oublie
-</app-button-redirector>
+<ion-toolbar color="primary">
+    <div id="header">
+        <ion-icon name="person-circle" routerLink="/utilisateurs"></ion-icon>
+        <ion-text routerLink="/utilisateurs"><p>Monique DUBOIS</p></ion-text>
+        <ion-icon routerLink="/notifications" id="notification-icon" name="notifications-outline"></ion-icon>
+    </div>
+</ion-toolbar>
+<ion-content color="primary">
 
 
-
+    
+    <div class="bottom">
+        <ion-button expand="full" size="large" color="success" routerLink="/medics">Gestion</ion-button>
+    </div>
+</ion-content>

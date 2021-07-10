@@ -1,9 +1,7 @@
 <ion-content color="primary">
     <form [formGroup]="inscriptionForm" (ngSubmit)="creerCompte()">
         <ion-text>
-            <p>
-                Créer un compte
-            </p>
+            <p>Créer un compte</p>
         </ion-text>
         <ion-item>
             <ion-label>
@@ -22,9 +20,7 @@
             <ion-input type="password" formControlName="motDePasseConfirme">
             </ion-input>
         </ion-item>
-
         <ion-button expand="full" size="large" color="success" type="submit">S'inscrire</ion-button>
-        
     </form>
     <div class="bottom">
         <ion-button expand="full" size="large" color="danger" routerLink="/connexion">
