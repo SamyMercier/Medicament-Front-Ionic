@@ -17,6 +17,7 @@ export class MedicsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.medicService.getAll().subscribe(elems => {
+      console.log(elems);
       this.medics = elems;
     });
 
