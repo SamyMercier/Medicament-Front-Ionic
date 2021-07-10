@@ -57,6 +57,7 @@ import { DureesNewFormComponent } from './feature/duree/pages/durees-new-form/du
 import { DureesListComponent } from './feature/duree/pages/durees-list/durees-list.component';
 import { DureesPagesComponent } from './feature/duree/pages/durees-pages/durees-pages.component';
 import { IonicModule } from '@ionic/angular';
+import { MdpOublieComponent } from './feature/authentification/mdp-oublie/mdp-oublie.component';
 
 const modules = [
   MatButtonModule,
@@ -102,6 +103,7 @@ const modules = [
     AssistantDetailComponent,
     ConnexionComponent,
     InscriptionComponent,
+    MdpOublieComponent,
     FrequencesPagesComponent,
     FrequencesListComponent,
     FrequencesNewFormComponent,
