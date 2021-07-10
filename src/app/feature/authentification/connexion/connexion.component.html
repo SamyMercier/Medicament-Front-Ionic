@@ -1,24 +1,26 @@
-<!-- <section id="container">
-    <form [formGroup]="connexionForm">
-        <mat-card id="card">
-            <section id="box1" class="box">
-                <mat-card-title>Se connecter</mat-card-title>
-            </section>
-            <section id="box2" class="box">
-                <mat-form-field appearance="standard">
-                    <mat-label>Email</mat-label>
-                    <input type="text" matInput placeholder="Saisir une adresse email" formControlName="email">
-                </mat-form-field>
-                <mat-form-field appearance="standard">
-                    <mat-label>Mot de passe</mat-label>
-                    <input type="password" matInput placeholder="Saisir un mot de passe" formControlName="motDePasse">
-                </mat-form-field>
-                <a mat-button id="link" routerLink="/mdp_oublie">Mot de passe oublié ?</a>
-            </section>
-            <section id="box3" class="box">
-                <button id="button1" class="button" mat-raised-button color="primary" type="submit" (click)="verifierCompteExiste()">Se connecter</button>
-                <button id="button2" class="button" mat-raised-button type="submit" routerLink="/inscription">Créer un compte</button>
-            </section>
-        </mat-card>
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Authentification</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <form [formGroup]="form">
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" formControlName="email" required></ion-input>
+      </ion-item>
+  
+      <ion-item lines="full">
+        <ion-label position="floating">Mot de passe</ion-label>
+        <ion-input type="password" formControlName="motDePasse" required></ion-input>
+      </ion-item>
+  
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" expand="full" size="default">Se connecter</ion-button>
+          <a [routerLink]="" class="small-text">Mot de passe oublié?</a>
+        </ion-col>
+      </ion-row>
     </form>
-</section> -->
+  </ion-content>
