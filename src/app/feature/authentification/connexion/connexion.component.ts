@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthHttpService } from '../services/auth-http.service';
@@ -8,9 +9,9 @@ import { AuthHttpService } from '../services/auth-http.service';
   styleUrls: ['./connexion.component.css']
 })
 /**
- * Class représentant le component d'une connexion
+ * Class représentant le component d'une connexion Auth0
  * @author fabien
- * @version 1.0
+ * @version 2.0
  */
 export class ConnexionComponent implements OnInit {
 
@@ -27,7 +28,7 @@ export class ConnexionComponent implements OnInit {
    */
   ngOnInit(): void {
     this.form= new FormGroup({
-      email: new FormControl(""),
+      pseudoOrEmail: new FormControl(""),
       motDePasse: new FormControl("")
     })
   }
@@ -37,9 +38,12 @@ export class ConnexionComponent implements OnInit {
    * et ajoute dans le local storage l'id du compte
    */
   onSubmit(){
-    this.service.connexion(this.form.value).subscribe((compteId:string)=>{
-      localStorage.setItem("compteId", compteId);
-      window.location.href = "home";
+    this.service.connexion(this.form.value).subscribe((donnee:string)=>{
+      const compte:any = JSON.parse(donnee);
+      if(compte.etat) {
+        localStorage.setItem("id", compte.motDePasse);
+        window.location.href = "home";
+      }
     }, (err)=>{
         return; // redirection vers la page d'authentification
     });
