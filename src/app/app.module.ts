@@ -35,7 +35,6 @@ import { RendezvousNewFormComponent } from './feature/rendezvous/pages/rendezvou
 import { NotificationPageComponent } from './feature/notification/pages/notification-page/notification-page.component';
 import { NotificationDetailComponent } from './feature/notification/pages/notification-detail/notification-detail.component';
 import { NotificationListComponent } from './feature/notification/pages/notification-list/notification-list.component';
-import { NotificationEditFormComponent } from './feature/notification/pages/notification-edit-form/notification-edit-form.component';
 import { NotificationNewFormComponent } from './feature/notification/pages/notification-new-form/notification-new-form.component';
 import { NotificationFormComponent } from './feature/notification/components/notification-form/notification-form.component';
 import { ComptePageComponent } from './feature/compte/pages/compte-page/compte-page.component';
@@ -57,6 +56,7 @@ import { DureesNewFormComponent } from './feature/duree/pages/durees-new-form/du
 import { DureesListComponent } from './feature/duree/pages/durees-list/durees-list.component';
 import { DureesPagesComponent } from './feature/duree/pages/durees-pages/durees-pages.component';
 import { IonicModule } from '@ionic/angular';
+import { MdpOublieComponent } from './feature/authentification/mdp-oublie/mdp-oublie.component';
 
 const modules = [
   MatButtonModule,
@@ -92,7 +92,6 @@ const modules = [
     NotificationPageComponent,
     NotificationDetailComponent,
     NotificationListComponent,
-    NotificationEditFormComponent,
     NotificationNewFormComponent,
     NotificationFormComponent,
     ComptePageComponent,
@@ -102,6 +101,7 @@ const modules = [
     AssistantDetailComponent,
     ConnexionComponent,
     InscriptionComponent,
+    MdpOublieComponent,
     FrequencesPagesComponent,
     FrequencesListComponent,
     FrequencesNewFormComponent,
