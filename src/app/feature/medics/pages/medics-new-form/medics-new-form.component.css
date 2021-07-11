@@ -1,35 +1,3 @@
-.form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width:100%;
-}
-.content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width:100%;
-}
-
-.duree{
-    width: 100%;
-}
-.duree-info{
-    display: flex;
-    flex-direction: column;
-}
-
-.frequence{
-    width: 100%;
-}
-.frequence-info{
-    display: flex;
-    flex-direction: column;
-}
-.heures{
-    width: 100%;
-}
-
-ion-content{
-    width:100%;
+h1{
+    margin:0;
 }

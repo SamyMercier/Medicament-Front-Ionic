@@ -1,29 +1,29 @@
-<ion-content>
-    <form class="form" [formGroup]="medicForm">
+<ion-content color="primary">
+    <form [formGroup]="medicForm">
+
         <ion-text>
             <h1>Ajouter un médicament</h1>
         </ion-text>
-        <div class="content">
-            <ion-input name="nom" type="text" formControlName="nom" placeholder="nom"></ion-input>
-            <ion-card class="duree" (click)="openModalDureeForm()">
-                <ion-card-header>
-                    <ion-label>Duree</ion-label>
-                </ion-card-header>
 
-                <ion-card-content class="duree-info">
+        <ion-item>
+            <ion-label><h1>Nom :</h1></ion-label>
+            <ion-input name="nom" type="text" formControlName="nom"></ion-input>
+        </ion-item>
+
+        <ion-item (click)="openModalDureeForm()">
+            <ion-label><h1>Durée :</h1></ion-label>
+            <ion-card *ngIf="dureeDataDto.dateDebut!=null">
+                <ion-card-content>
                     <ion-label>{{dureeDataDto.choixDuree}}</ion-label>
                     <ion-label>{{dureeDataDto.dateDebut | date : 'dd/MM/yyyy'}}</ion-label>
-                    <ion-label *ngIf="choixDureeJusqueX()">DateFin = {{dureeDataDto.dateFin | date : 'dd/MM/yyyy'}}
-                    </ion-label>
+                    <ion-label *ngIf="choixDureeJusqueX()">DateFin = {{dureeDataDto.dateFin | date : 'dd/MM/yyyy'}}</ion-label>
                     <ion-label *ngIf="choixDureePendantX()">Nb = {{dureeDataDto.nbJour}}</ion-label>
                 </ion-card-content>
-            </ion-card>
-
-            <ion-card class="frequence" (click)="openModalFrequenceForm()">
-                <ion-card-header>
-                    <ion-label>Frequence de prises</ion-label>
-                </ion-card-header>
-
+            </ion-card>   
+        </ion-item>
+        <ion-item>
+            <ion-label><h1>Frequence :</h1></ion-label>
+            <ion-card>
                 <ion-card-content class="frequence-info">
                     <ion-label>{{frequenceDataDto.choixFrequence}}</ion-label>
 
@@ -43,12 +43,13 @@
 
                 </ion-card-content>
             </ion-card>
-
-            <ion-card class="heures">
-                <ion-card-header>
-                    <ion-label>Heures de prises</ion-label>
-                </ion-card-header>
-
+        </ion-item>
+        <ion-item id="heureDePrise">
+            <div>
+                <ion-text><h1>Heures :</h1></ion-text>
+            </div>
+            <div>
+                <ion-card>
                 <ion-card-content class="heures-form">
                     <ng-container *ngIf="!choixFrequenceChaqueJoursTtsXHeures()">
 
@@ -68,11 +69,12 @@
                     </ng-container>
                 </ion-card-content>
             </ion-card>
-
-            <ion-item>
-                <ion-button (click)="ajouter()">Save</ion-button>
-            </ion-item>
-        </div>
-
+            </div>
+            
+        </ion-item>      
+        <ion-button (click)="ajouter()" expand="full" size="large" color="success" routerLink="/medics">Ajouter</ion-button>
     </form>
+    <div class="bottom">
+        <ion-button expand="full" size="large" color="danger" routerLink="/medics">Retour</ion-button>
+    </div>
 </ion-content>

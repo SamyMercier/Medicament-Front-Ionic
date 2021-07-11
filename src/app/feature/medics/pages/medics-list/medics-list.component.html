@@ -1,11 +1,10 @@
-<ion-content class="container">
-    <div class="medics">
-        <div class="medic" *ngFor="let medic of medics">
+<ion-content color="primary">
+    <div>
+        <div *ngFor="let medic of medics">
             <ion-card (click)="goToUpdate(medic.id)">
                 <ion-card-header>
                     <ion-card-title>{{medic.nom}}</ion-card-title>
                 </ion-card-header>
-
                 <ion-card-content>
                     <ion-list>
                         <ion-item>dateDebut : {{medic.dureeDto.dateDebut | date : 'dd/MM/yyyy'}}</ion-item>
@@ -18,15 +17,10 @@
             </ion-card>
         </div>
     </div>
-    <div class="button">
-        <app-button-redirector [routerLink]="'/medics/create'">
-            ajouter medic
-        </app-button-redirector>
-        <app-button-redirector routerLink="/medics">
-            /medics
-        </app-button-redirector>
-        <app-button-redirector routerLink="/home">
-            /home
-        </app-button-redirector>
-    </div> -->
+    <ion-button expand="full" size="large" color="success" [routerLink]="'/medics/create'">Ajouter</ion-button>
+
+    <div class="bottom">
+        <ion-button expand="full" size="large" color="danger" routerLink="/home">Retour</ion-button>
+    </div>
+    
 </ion-content>
