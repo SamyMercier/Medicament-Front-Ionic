@@ -12,6 +12,10 @@ import { HoraireDataDto } from 'src/app/feature/frequence/models/horaire-data-dt
 import { DureeService } from 'src/app/feature/duree/service/duree.service';
 import { FrequenceService } from 'src/app/feature/frequence/service/frequence.service';
 
+import { ModalController } from '@ionic/angular';
+
+
+
 @Component({
   selector: 'app-medics-new-form',
   templateUrl: './medics-new-form.component.html',
@@ -29,6 +33,9 @@ export class MedicsNewFormComponent implements OnInit {
   medicTmp: MedicTmp;
 
   constructor(
+    private modalController: ModalController,
+
+
     private medicService: MedicService,
     private dureeService: DureeService,
     private frequenceService: FrequenceService,
@@ -53,30 +60,25 @@ export class MedicsNewFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  openDureeFormDialog() {
-    const dialogConfigDuree = new MatDialogConfig();
+  async openModalDureeForm() {
+    const modaldureeForm = await this.modalController.create({
+    component: DureesNewFormComponent,
+    });
+    modaldureeForm.onDidDismiss().then(data=>{
+      this.dureeDataDto = data.data;
+      })
+    return await modaldureeForm.present();
+   }
 
-    dialogConfigDuree.disableClose = true;
-    dialogConfigDuree.autoFocus = true;
-
-    this.dialogRefDuree = this.dialog.open(DureesNewFormComponent, dialogConfigDuree);
-    this.dialogRefDuree.afterClosed().subscribe(res => {
-      this.dureeDataDto = res;
-    })
-  }
-
-  openFrequenceFormDialog() {
-
-    const dialogConfigFrequence = new MatDialogConfig();
-    dialogConfigFrequence.disableClose = true;
-    dialogConfigFrequence.autoFocus = true;
-
-    this.dialogRefFrequence = this.dialog.open(FrequencesNewFormComponent, dialogConfigFrequence);
-    this.dialogRefFrequence.afterClosed().subscribe(res => {
-      this.frequenceDataDto = res;
-    })
-  }
-
+   async openModalFrequenceForm() {
+    const modalFrequenceForm = await this.modalController.create({
+    component: FrequencesNewFormComponent,
+    });
+    modalFrequenceForm.onDidDismiss().then(data=>{
+      this.frequenceDataDto = data.data;
+      })
+    return await modalFrequenceForm.present();
+   }
 
   ajouter = () => {
     this.medicTmp.nom = this.medicForm.value.nom;
@@ -87,11 +89,10 @@ export class MedicsNewFormComponent implements OnInit {
       this.medicTmp.listeHeuresData.push(element.heure);
     });
 
-    //this.medicTmp.listeHeures = this.horaireDataDto;
-    console.log(JSON.stringify(this.medicTmp));
-    this.medicService.create(this.medicTmp).subscribe(medic => {
+    console.log("AJOUTER => " +JSON.stringify(this.medicTmp));
+     this.medicService.create(this.medicTmp).subscribe(medic => {
       this.router.navigate(["/medics"]);
-    });
+    }); 
   }
 
   addHeures() {
