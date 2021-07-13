@@ -1,8 +1,7 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Compte } from '../../compte/models/compte';
-import { CompteService } from '../../compte/services/compte.service';
+import { FormControl, FormGroup } from '@angular/forms';
+import { AuthHttpService } from '../services/auth-http.service';
 
 @Component({
   selector: 'app-connexion',
@@ -10,40 +9,44 @@ import { CompteService } from '../../compte/services/compte.service';
   styleUrls: ['./connexion.component.css']
 })
 /**
- * Class représentant le component d'une connexion
+ * Class représentant le component d'une connexion Auth0
  * @author fabien
- * @version 1.0
+ * @version 2.0
  */
 export class ConnexionComponent implements OnInit {
 
-  connexionForm : FormGroup;
-
-  compte : Compte = new Compte(0, "" , "", []);
-
-  constructor(
-    private service : CompteService, 
-    private fb : FormBuilder, 
-    private router : Router
-    ) { 
-      this.connexionForm = this.fb.group({
-        email : "",
-        motDePasse : ""
-      })
-    }
-  
-  ngOnInit(): void {}
+  form:FormGroup;
 
   /**
-   * Cette méthode permet de vérifier si un compte existe
+   * Constructeur
+   * @param service
    */
-  verifierCompteExiste = () => {
-    let email = this.connexionForm.value.email;
-    let motDePasse = this.connexionForm.value.motDePasse;
-    let compteRecupere = this.service.findByEmail(email);
-    console.log(motDePasse + " " +compteRecupere.motDePasse);
-    if(compteRecupere.email === email && compteRecupere.motDePasse === motDePasse) {
-      this.router.navigate(["/home"]);
-    }
+  constructor(private service:AuthHttpService) {}
+  
+  /**
+   * Cette méthode permet d'initiliaser du formulaire à zéro au démarage du composant
+   */
+  ngOnInit(): void {
+    this.form= new FormGroup({
+      pseudoOrEmail: new FormControl(""),
+      motDePasse: new FormControl("")
+    })
+  }
+
+  /**
+   * Cette méthode permet de récupérer les données du formulaire, 
+   * et ajoute dans le local storage l'id du compte
+   */
+  onSubmit(){
+    this.service.connexion(this.form.value).subscribe((donnee:string)=>{
+      const compte:any = JSON.parse(donnee);
+      if(compte.etat) {
+        localStorage.setItem("id", compte.motDePasse);
+        window.location.href = "home";
+      }
+    }, (err)=>{
+        return; // redirection vers la page d'authentification
+    });
   }
 
 }

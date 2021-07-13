@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatRadioChange } from '@angular/material/radio';
+import { ModalController } from '@ionic/angular';
 import { Frequence } from '../../models/frequence';
 import { FrequenceDataDto } from '../../models/frequence-data-dto';
 import { FrequenceService } from '../../service/frequence.service';
@@ -23,12 +24,13 @@ export class FrequencesNewFormComponent implements OnInit {
   CertainsJoursForm: FormGroup;
 
   choixFrequence: string = "";
-  frequences: string[] = ["Chaque jours X par jours", "Chaque jours toutes les X heures", "Tous les X jours", "Certains jours"];
+  frequences: string[] = [this.frequenceService.CHAQUE_JOURS_X_PAR_JOURS, this.frequenceService.CHAQUE_JOURS_TTS_X_HEURES,
+     this.frequenceService.TTS_X_JOURS,this.frequenceService.CERTAINS_JOURS];
 
   frequenceDataDto: FrequenceDataDto;
 
   constructor(
-    private dialogRefFrequence: MatDialogRef<FrequencesNewFormComponent>,
+    private viewCtrl: ModalController,
     private fb: FormBuilder,
     private frequenceService : FrequenceService,
   ) {
@@ -36,7 +38,7 @@ export class FrequencesNewFormComponent implements OnInit {
 
 
     this.frequenceForm = this.fb.group({
-      choixFrequence: "",
+      choixFrequence: new FormControl(),
 
       x: new FormControl(),
 
@@ -77,9 +79,11 @@ export class FrequencesNewFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  saveFrequence() {
+  dismiss(){
+    this.viewCtrl.dismiss();
+  }
 
-    //console.log("freqnuce NEW this.frequenceFrom => "+  JSON.stringify(this.frequenceForm));
+  dismissSave() {
     this.frequenceDataDto.choixFrequence = this.frequenceForm.value.choixFrequence;
     this.frequenceDataDto.x = this.frequenceForm.value.x;
     this.frequenceDataDto.heureDebut = this.frequenceForm.value.heureDebut;
@@ -93,12 +97,8 @@ export class FrequencesNewFormComponent implements OnInit {
     this.frequenceDataDto.samedi = this.frequenceForm.value.samedi;
     this.frequenceDataDto.dimanche = this.frequenceForm.value.dimanche;
 
-    this.dialogRefFrequence.close(this.frequenceDataDto);
-  }
-
-  closeFrequence() {
-    this.dialogRefFrequence.close();
-  }
+    this.viewCtrl.dismiss(this.frequenceDataDto);
+    }
 
   choixFrequenceChaqueJoursXParJour() {
     return this.frequenceForm.value.choixFrequence[0] === this.frequenceService.CHAQUE_JOURS_X_PAR_JOURS;
