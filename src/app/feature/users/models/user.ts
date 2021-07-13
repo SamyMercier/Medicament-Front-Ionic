@@ -4,27 +4,39 @@ import { Rendezvous } from "../../rendezvous/models/rendezvous";
 import { AssistantOuAssiste } from "./assistant-ou-assiste";
 
 export class User {
-    public id : string;
-    public compteId : string;
+    public compteId : number;
+    public utilisateurId : number;
     public nom : string;
     public prenom : string;
-    public dateNaissance : Date;
+    public dateDeNaissance : Date;
     public assistants : AssistantOuAssiste[];
+    public assistes : AssistantOuAssiste[];
+    public medicaments : Medic[];
+    public notifications : Notification[];
+    public rendezVous : Rendezvous[];
 
     constructor(
-        id : string,
-        compteId : string,
+        compteId : number,
+        utilisateurId : number,
         nom : string,
         prenom : string,
-        dateNaissance : Date,
-        assistants : AssistantOuAssiste[]
+        dateDeNaissance : Date,
+        assistants : AssistantOuAssiste[],
+        assistes : AssistantOuAssiste[],
+        medicaments : Medic[],
+        notifications : Notification[],
+        rendezVous : Rendezvous[]
         ) {
-            this.id = id;
             this.compteId = compteId;
+            this.utilisateurId = utilisateurId;
             this.nom = nom;
             this.prenom = prenom;
-            this.dateNaissance = dateNaissance;
+            this.dateDeNaissance = dateDeNaissance;
             this.assistants = assistants;
+            this.assistes = assistes;
+            this.medicaments = medicaments;
+            this.notifications = notifications;
+            this.rendezVous = rendezVous;
     }
 
     public getNom = () => {

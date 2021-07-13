@@ -2,13 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width:100%;
+    
 }
 .content{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width:100%;
 }
 
 .duree{
@@ -28,8 +27,4 @@
 }
 .heures{
     width: 100%;
-}
-
-ion-content{
-    width:100%;
 }

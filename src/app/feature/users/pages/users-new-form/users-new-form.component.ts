@@ -14,7 +14,7 @@ export class UsersNewFormComponent implements OnInit {
     this.userProfile = this.fb.group({
       nom: [''],
       prenom: [''],
-      dateNaissance: ['']
+      dateDeNaissance: ['']
     })
    }
 

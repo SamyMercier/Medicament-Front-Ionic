@@ -1,73 +1,28 @@
-<ion-content color="primary">
-    <ion-text color="dark">
-        <h1>Medical</h1>
-    </ion-text>
-    <ion-card *ngIf="this.users.length > 0">
-        <ion-card-header color="tertiary">
-            <ion-card-title>Utilisateur(s) du compte</ion-card-title>
-        </ion-card-header>
-        <ion-list *ngFor="let user of users">
-            <ion-item-sliding #itemSliding>
-                <ion-item>
-                    <ion-icon name="person-circle"></ion-icon>
-                    <ion-text>{{user.nom}} {{user.prenom}}</ion-text>
-                    <ion-text *ngIf="user.id == this.utilisateurIdSession">(connecté)</ion-text>
-                </ion-item>
-                <ion-item-options side="end">
-                    <ion-item-option color="medium">
-                        <ion-icon name="settings"></ion-icon>
-                    </ion-item-option>
-                </ion-item-options>
-                <ion-item-options side="start">
-                    <ion-item-option *ngIf="user.id != this.utilisateurIdSession" color="success"
-                        (click)="changerUtilisateur(user.id, itemSliding)">
-                        <ion-icon name="log-in-outline"></ion-icon>
-                    </ion-item-option>
-                    <ion-item-option *ngIf="user.id == this.utilisateurIdSession" color="danger"
-                        (click)="seDeconnecter(itemSliding)">
-                        <ion-icon name="log-out-outline"></ion-icon>
-                    </ion-item-option>
-                </ion-item-options>
-            </ion-item-sliding>
-        </ion-list>
-    </ion-card>
-    <ion-card *ngIf="this.assistants.length > 0">
-        <ion-card-header color="tertiary">
-            <ion-card-title>Assistant(s) des utilisateurs</ion-card-title>
-        </ion-card-header>
-        <ion-list *ngFor="let assistant of assistants">
-            <ion-item>
-                <ion-icon name="person-circle"></ion-icon>
-                <ion-text>{{assistant.nom}} {{assistant.prenom}}</ion-text>
-            </ion-item>
-            <ion-item-options side="end">
-                <ion-item-option color="danger">
-                    <ion-icon name="trash"></ion-icon>
-                </ion-item-option>
-            </ion-item-options>
-        </ion-list>
-    </ion-card>
-    <ion-card *ngIf="this.assistes.length > 0">
-        <ion-card-header color="tertiary">
-            <ion-card-title>Assisté(s) des utilisateurs</ion-card-title>
-        </ion-card-header>
-        <ion-list *ngFor="let assiste of assistes">
-            <ion-item>
-                <ion-icon name="person-circle"></ion-icon>
-                <ion-text>{{assiste.nom}} {{assiste.prenom}}</ion-text>
-            </ion-item>
-            <ion-item-options side="end">
-                <ion-item-option color="danger">
-                    <ion-icon name="trash"></ion-icon>
-                </ion-item-option>
-            </ion-item-options>
-        </ion-list>
-    </ion-card>
+<h1>Medical.</h1>
 
-    <ion-button expand="full" size="large" color="success" routerLink="/utilisateurs/create">Ajouter un utilisateur</ion-button>
-    <ion-button expand="full" size="large" color="danger" routerLink="/home">Retour</ion-button>
-
-    <div class="bottom">
-        <ion-button expand="full" size="large" color="danger" routerLink="/connexion">Déconnexion</ion-button>
+<div id="affichage">
+    <div id="users-area" *ngIf="users">
+        <p>Utilisateur(s) du compte</p>
+        <div class="profile" [routerLink]="['details/',user.id]" *ngFor="let user of users" (click)="showUrl(user.id)">
+            <div class="profile-picture"></div>
+            <span>{{user.nom}} {{user.prenom}}</span>
+        </div>
     </div>
-</ion-content>
+    
+    <div id="assistant-area" *ngIf="assistants">
+        <p>Assistant(s)</p>
+        <div class="profile" routerLink="/utilisateurs/assistant/:id" *ngFor="let assistant of assistants">
+            <div class="profile-picture"></div>
+            <span>{{assistant.nom}} {{assistant.prenom}}</span>
+        </div>
+    </div>
+</div>
+
+<div id="button-container">
+    <app-button-redirector routerLink="/utilisateurs/create">
+        Ajouter un utilisateur
+    </app-button-redirector>
+    <app-button-redirector routerLink="/home">
+        Retour
+    </app-button-redirector>
+</div>
