@@ -1,24 +1,48 @@
-<ion-content>
-    <form class="form" [formGroup]="medicForm">
+<ion-content color="primary">
+    <form [formGroup]="medicForm">
         <ion-text>
             <h1>Ajouter un médicament</h1>
         </ion-text>
-        <div class="content">
-            <ion-input name="nom" type="text" formControlName="nom" placeholder="nom"></ion-input>
-            <ion-card class="duree" (click)="openModalDureeForm()">
-                <ion-card-header>
-                    <ion-label>Duree</ion-label>
-                </ion-card-header>
+    
+        <ion-item>
+            <ion-label><h1>Nom :</h1></ion-label>
+            <ion-input name="nom" type="text" formControlName="nom"></ion-input>
+            
+        </ion-item>
+        <ion-list id="suggestions">
+           
+            <ion-item *ngFor="let suggestion of listeSuggestions" class="suggestion-item">
+                <ion-text >
+                    {{suggestion}}
+                </ion-text>
+            </ion-item>
+           
+            
+        </ion-list>
+        
+        
 
-                <ion-card-content class="duree-info">
-                    <ion-label>{{dureeDataDto.choixDuree}}</ion-label>
-                    <ion-label>{{dureeDataDto.dateDebut | date : 'dd/MM/yyyy'}}</ion-label>
-                    <ion-label *ngIf="choixDureeJusqueX()">DateFin = {{dureeDataDto.dateFin | date : 'dd/MM/yyyy'}}
-                    </ion-label>
-                    <ion-label *ngIf="choixDureePendantX()">Nb = {{dureeDataDto.nbJour}}</ion-label>
-                </ion-card-content>
-            </ion-card>
-
+        <ion-item (click)="openModalDureeForm()">
+            <ion-label><h1>Duree :</h1></ion-label>
+          
+                <div>
+                    
+                    <ion-text *ngIf="choixDureePendantX()">
+                        <h1>Pendant {{dureeDataDto.nbJour}} jours</h1>    
+                    </ion-text>
+                    <ion-text *ngIf="dureeDataDto.dateDebut!=null">
+                        <h1>Début : {{dureeDataDto.dateDebut | date : 'dd/MM/yyyy'}}</h1>
+                    </ion-text>
+                    <ion-text *ngIf="choixDureeJusqueX()">
+                        <h1>Fin : {{dureeDataDto.dateFin | date : 'dd/MM/yyyy'}}</h1>
+                    </ion-text>
+                    <ion-text *ngIf="dureeDataDto.choixDuree==='Pas de fin'">
+                        <h1>Pas de fin</h1>
+                    </ion-text>
+                </div>
+        </ion-item>
+        
+            
             <ion-card class="frequence" (click)="openModalFrequenceForm()">
                 <ion-card-header>
                     <ion-label>Frequence de prises</ion-label>
@@ -72,7 +96,7 @@
             <ion-item>
                 <ion-button (click)="ajouter()">Save</ion-button>
             </ion-item>
-        </div>
+
 
     </form>
 </ion-content>
