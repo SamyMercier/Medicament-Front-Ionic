@@ -2,11 +2,29 @@ h1{margin:0}
 
 #suggestions{
     position: absolute;
+    right:0;
     width: 100%;
-    z-index: 2;
+    z-index: 12;
 }
 
 .suggestion-item{
-    width: 80%;
+    width: 100%;
     text-align: right;
+    z-index: 12;
+    
+}
+
+#cache-font{
+    display: block;
+    position: absolute;
+    left:0;
+    top:0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(2px);
+    z-index: 10;
+}
+
+.layer2{
+    z-index: 12;
 }
