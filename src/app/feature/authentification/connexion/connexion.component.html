@@ -1,9 +1,9 @@
 <ion-content color="primary">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="connexionForm" (ngSubmit)="seConnecterCompte()">
     <ion-text><p>Connexion</p></ion-text>
         <ion-item>
             <ion-label><h1>Email :</h1></ion-label>
-            <ion-input type="text" formControlName="pseudoOrEmail" required></ion-input>
+            <ion-input type="text" formControlName="email" required></ion-input>
         </ion-item>
         <ion-item>
             <ion-label><h1>Mot de passe :</h1></ion-label>
@@ -12,8 +12,7 @@
 
         <ion-text id="link" routerLink="/mdp_oublie"><h2>Mot de passe oublié ?</h2></ion-text>
 
-        <ion-button expand="full" size="large" color="success" type="submit">Se
-            connecter</ion-button>
+        <ion-button expand="full" size="large" color="success" type="submit">Se connecter</ion-button>
         
     </form>
     <div class="bottom">
