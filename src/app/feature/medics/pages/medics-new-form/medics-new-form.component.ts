@@ -102,20 +102,14 @@ export class MedicsNewFormComponent implements OnInit {
   }
 
   ajouter = () => {
-    this.medicTmp.nom = this.medicForm.value.nom;
     this.medicTmp.dureeData = this.dureeDataDto;
     this.medicTmp.frequenceData = this.frequenceDataDto;
 
     this.medicForm.value.heures.forEach(element => {
-      console.log(JSON.stringify(element));
       let str = element.heure;
-      console.log(JSON.stringify(str));
       let d: String = str.split('T')[1];
-      console.log("d => " + d);
       let m: String = d.split(':')[0];
-      console.log("m => " + m);
       let n: String = d.split(':')[1];
-      console.log("n => " + n)
 
       this.medicTmp.listeHeuresData.push(m + ":" + n);
     });
