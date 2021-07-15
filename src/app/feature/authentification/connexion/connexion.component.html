@@ -1,24 +1,27 @@
-<section id="container">
-    <form [formGroup]="connexionForm">
-        <mat-card id="card">
-            <section id="box1" class="box">
-                <mat-card-title>Se connecter</mat-card-title>
-            </section>
-            <section id="box2" class="box">
-                <mat-form-field appearance="standard">
-                    <mat-label>Email</mat-label>
-                    <input type="text" matInput placeholder="Saisir une adresse email" formControlName="email">
-                </mat-form-field>
-                <mat-form-field appearance="standard">
-                    <mat-label>Mot de passe</mat-label>
-                    <input type="password" matInput placeholder="Saisir un mot de passe" formControlName="motDePasse">
-                </mat-form-field>
-                <a mat-button id="link" routerLink="/mdp_oublie">Mot de passe oublié ?</a>
-            </section>
-            <section id="box3" class="box">
-                <button id="button1" class="button" mat-raised-button color="primary" type="submit" (click)="verifierCompteExiste()">Se connecter</button>
-                <button id="button2" class="button" mat-raised-button type="submit" routerLink="/inscription">Créer un compte</button>
-            </section>
-        </mat-card>
+<ion-content color="primary">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-text><p>Connexion</p></ion-text>
+        <ion-item>
+            <ion-label><h1>Email :</h1></ion-label>
+            <ion-input type="text" formControlName="pseudoOrEmail" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label><h1>Mot de passe :</h1></ion-label>
+            <ion-input type="password" formControlName="motDePasse" required></ion-input>
+        </ion-item>
+
+        <ion-text id="link" routerLink="/mdp_oublie"><h2>Mot de passe oublié ?</h2></ion-text>
+
+        <ion-button expand="full" size="large" color="success" type="submit">Se
+            connecter</ion-button>
+        
     </form>
-</section>
+    <div class="bottom">
+        <ion-button expand="full" size="large" color="danger" routerLink="/inscription">
+            <ion-text>
+                <h5>Pas de compte ?</h5>
+                Créer un compte
+            </ion-text>
+        </ion-button>
+    </div>
+</ion-content>
