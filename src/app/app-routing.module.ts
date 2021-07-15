@@ -18,7 +18,11 @@ import { MedicsListComponent } from './feature/medics/pages/medics-list/medics-l
 import { MedicsNewFormComponent } from './feature/medics/pages/medics-new-form/medics-new-form.component';
 import { MedicsPageComponent } from './feature/medics/pages/medics-page/medics-page.component';
 import { NotfoundComponent } from './feature/notfound/notfound.component';
+import { NotificationDetailComponent } from './feature/notification/pages/notification-detail/notification-detail.component';
+import { NotificationEditFormComponent } from './feature/notification/pages/notification-edit-form/notification-edit-form.component';
 import { NotificationListComponent } from './feature/notification/pages/notification-list/notification-list.component';
+import { NotificationNewFormComponent } from './feature/notification/pages/notification-new-form/notification-new-form.component';
+import { NotificationPageComponent } from './feature/notification/pages/notification-page/notification-page.component';
 import { RendezvousDetailComponent } from './feature/rendezvous/pages/rendezvous-detail/rendezvous-detail.component';
 import { RendezvousEditFormComponent } from './feature/rendezvous/pages/rendezvous-edit-form/rendezvous-edit-form.component';
 import { RendezvousListComponent } from './feature/rendezvous/pages/rendezvous-list/rendezvous-list.component';
@@ -86,7 +90,14 @@ const routes: Routes = [
   },
 
   {
-    path: "notifications", component: NotificationListComponent,
+    path: "notifications", component: NotificationPageComponent,
+    children: [
+      { path: "create", component: NotificationNewFormComponent },
+      { path: "detail/:id", component: NotificationDetailComponent },
+      { path: "update/:id", component: NotificationEditFormComponent },
+      { path: "list", component: NotificationListComponent },
+      { path: "", component: NotificationListComponent }
+    ]
   },
 
   { path: "inscription", component: InscriptionComponent },
