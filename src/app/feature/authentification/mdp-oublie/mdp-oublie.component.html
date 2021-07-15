@@ -1,8 +1,18 @@
-<section>
-    <h2>Récupérer un mot de passe</h2>
+<ion-content color="primary">
     <form>
-        <label>Email</label>
-        <input type="text" placeholder="Email">
-        <button type="submit">Envoyer le lien de récupération</button>
+        <ion-text>
+            <p>
+                Récupérer un mot de passe
+            </p>
+        </ion-text>
+        <ion-item>
+            <ion-label><h1>Email :</h1></ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-button expand="full" size="large" color="success" type="submit">Confirmer l'email</ion-button>
     </form>
-</section>
+    <div class="bottom">
+        <ion-button expand="full" size="large" color="danger" routerLink="/connexion">Retour</ion-button>
+    </div>
+    
+</ion-content>

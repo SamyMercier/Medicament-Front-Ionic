@@ -1,4 +1,4 @@
-<section id="container">
+<ion-content color="primary">
     <form [formGroup]="inscriptionForm" (ngSubmit)="creerCompte()">
         <ion-text>
             <p>Créer un compte</p>
@@ -17,4 +17,12 @@
         </ion-item>
         <ion-button expand="full" size="large" color="success" type="submit">S'inscrire</ion-button>
     </form>
-</section>
+    <div class="bottom">
+        <ion-button expand="full" size="large" color="danger" routerLink="/connexion">
+            <ion-text>
+                <h5>déjà un compte ?</h5>
+                Se connecter
+            </ion-text>
+        </ion-button>
+    </div>
+</ion-content>
