@@ -53,12 +53,7 @@ export class MedicsNewFormComponent implements OnInit {
       this.medicTmp = new MedicTmp("", this.dureeDataDto, this.frequenceDataDto, []);
 
 
-      this.listeSuggestions=[
-        "Doliprane",
-        "Smecta",
-        "Dafalgan",
-        "Ibuprofene"
-      ]
+      this.listeSuggestions=[];
       console.log(this.listeSuggestions)
     this.medicForm = this.fb.group({
       nom: "",

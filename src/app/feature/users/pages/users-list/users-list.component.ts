@@ -25,6 +25,8 @@ export class UsersListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
+
     this.service.findAllByCompteId(this.compteIdSession).subscribe(
       (data: User[]) => this.users = data,
       console.error)
