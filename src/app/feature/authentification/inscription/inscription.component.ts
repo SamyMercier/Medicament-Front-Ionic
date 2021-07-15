@@ -13,38 +13,32 @@ import { CompteService } from '../../compte/services/compte.service';
 /**
  * Class qui représente le component d'inscription
  * @author fabien
- * @version 1.0
  */
 export class InscriptionComponent implements OnInit {
 
-  inscriptionForm : FormGroup;
-
-  compte : Compte = new Compte(0, "" , "", []);
-  compteurIdentifiant = 1;
+  inscriptionForm: FormGroup;
 
   constructor(
-    private service : CompteService, 
-    private fb : FormBuilder, 
-    private router : Router
-    ) { 
-      this.inscriptionForm = this.fb.group({
-        email : "",
-        motDePasse : "",
-        motDePasseConfirme : ""
-      })
-    }
+    private service: CompteService,
+    private fb: FormBuilder,
+  ) {
+    this.inscriptionForm = this.fb.group({
+      email: "",
+      motDePasse: ""
+    })
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   /**
    * Cette méthode permet de créer un compte
    */
-  creerCompte = () => {
-    let email = this.inscriptionForm.value.email;
-    let motDePasse = this.inscriptionForm.value.motDePasse;
-    let nouveauCompte = new Compte(++this.compteurIdentifiant, email, motDePasse, []);
-    this.service.save(nouveauCompte);
-    console.log(this.service.listeComptes);
-    this.router.navigate(["/connexion"])
+  public creerCompte = () => {
+    let isCompteCree: boolean;
+    this.service.creerCompte(this.inscriptionForm.value).subscribe((donnee: boolean) => 
+    isCompteCree = donnee, console.error);
+
+    console.log(isCompteCree);
   }
+
 }

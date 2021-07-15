@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Compte } from '../models/compte';
 
 @Injectable({
@@ -7,34 +9,35 @@ import { Compte } from '../models/compte';
 /**
  * Class réprésentant le service d'un compte
  * @author fabien
- * @version 1.0
  */
 export class CompteService {
 
-  compteTest : Compte = new Compte(1,"test@test.com","test", []); 
+  private readonly baseUrl: string =  "http://localhost:8080/comptes";
 
-  listeComptes = [this.compteTest];
-
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   /**
-   * Cette méthode me permet de récupérer un compte à partir d'une adresse email
-   * @param email 
-   * @returns 
+   * Cette méthode permet de créer un compte
+   * @param creationCompteDTO
    */
-  public findByEmail = (email : string) : Compte => {
-    let compteRecupere : Compte;
-    this.listeComptes.forEach(compte => {
-      if(compte.email == email) {
-        compteRecupere = compte;
-      }
-    })
-    return compteRecupere;
+  public creerCompte = (creationCompteDTO: Compte) : Observable<boolean> => {
+    return this.http.post<boolean>(this.baseUrl, creationCompteDTO);
   }
 
-  public save = (compte : Compte) : void => {
-    this.listeComptes.push(compte);
-    console.log("compte " + compte + " est créer");
+  /**
+   * Cette méthode permet de modifier un compte
+   * @param modificationCompteDTO
+   */
+  public modifierCompte = (modificationCompteDTO: Compte) => {
+    this.http.patch(this.baseUrl, modificationCompteDTO);
+  }
+
+  /**
+   * Cette méthode permet de désactiver un compte
+   * @param desactivationCompteDTO
+   */
+  public desactiverCompte = (desactivationCompteDTO: any) => {
+    this.http.patch(`${this.baseUrl}/desactiver`, desactivationCompteDTO);
   }
 
 }
