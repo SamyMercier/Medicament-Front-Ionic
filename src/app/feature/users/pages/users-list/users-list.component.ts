@@ -37,16 +37,22 @@ export class UsersListComponent implements OnInit {
       this.updateAssistantsAvecUtilisateurId();
       this.updateAssistesAvecUtilisateurId();
     }
+
+    if(localStorage.getItem("utilisateurId")!=null){
+      this.utilisateurIdSession = localStorage.getItem("utilisateurId");
+    }
   }
 
   changerUtilisateur = (utilisateurId: string, itemSliding: IonItemSliding) => {
     this.utilisateurIdSession = utilisateurId;
+    localStorage.setItem("utilisateurId",utilisateurId)
     itemSliding.close()
     this.updateAssistantsAvecUtilisateurId();
     this.updateAssistesAvecUtilisateurId();
   }
 
   seDeconnecter = (itemSliding: IonItemSliding) => {
+    localStorage.removeItem("utilisateurId");
     this.utilisateurIdSession = undefined;
     this.assistants = [];
     this.assistes = [];
