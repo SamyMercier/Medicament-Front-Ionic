@@ -81,4 +81,8 @@ export class UsersListComponent implements OnInit {
       (data: AssistantOuAssiste[]) => this.assistes = data,
       console.error)
   }
+
+  aucunUtilisateurConnecte = () => {
+    return localStorage.getItem("utilisateurId")!=null;
+  }
 }

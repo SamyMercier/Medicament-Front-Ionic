@@ -26,12 +26,22 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.recupererUtilisateurViaSession();
 
+    if(this.isUtilisateurConnecte){
+      this.router.navigate(['/connexion']);
+    }
+
   }
 
   recupererUtilisateurViaSession = () => {
     this.service.findById(this.utilisateurIdSession).subscribe(
       (data: User) => this.utilisateurConnecte = data,
       console.error)
+  }
+
+  isUtilisateurConnecte = () => {
+    console.log(localStorage.getItem("utilisateurId")!=null)
+    return localStorage.getItem("utilisateurId")!=null;
+    
   }
 
 }

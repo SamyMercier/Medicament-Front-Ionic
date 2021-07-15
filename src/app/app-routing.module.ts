@@ -93,7 +93,7 @@ const routes: Routes = [
   { path: "connexion", component: ConnexionComponent },
   { path: "mdp_oublie", component: MdpOublieComponent },
   { path: "home", component: HomePageComponent },
-  { path: "", component: HomePageComponent },
+  { path: "", component: ConnexionComponent },
   { path: "404", component: NotfoundComponent },
   { path: "**", redirectTo: "404" }
 

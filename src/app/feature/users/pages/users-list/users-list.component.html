@@ -3,8 +3,6 @@
         <h1>Medical</h1>
     </ion-text>
 
-
-    
     <ion-label *ngIf="this.users.length > 0"><h1>Utilisateur(s) du compte</h1></ion-label>
     <div *ngIf="this.users.length > 0">
         <ion-list *ngFor="let user of users">
@@ -33,10 +31,7 @@
     </ion-list>
     </div>
         
-    
-
-
-
+ <!--
     <ion-card *ngIf="this.assistants.length > 0">
         <ion-card-header color="tertiary">
             <ion-card-title>Assistant(s) des utilisateurs</ion-card-title>
@@ -69,9 +64,10 @@
             </ion-item-options>
         </ion-list>
     </ion-card>
+-->
 
     <ion-button expand="full" size="large" color="success" routerLink="/utilisateurs/create">Ajouter un utilisateur</ion-button>
-    <ion-button expand="full" size="large" color="danger" routerLink="/home">Retour</ion-button>
+    <ion-button expand="full" size="large" color="danger" routerLink="/home" *ngIf="aucunUtilisateurConnecte()">Retour</ion-button>
 
     <div class="bottom">
         <ion-button expand="full" size="large" color="danger" routerLink="/connexion">Déconnexion</ion-button>
