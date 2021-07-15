@@ -40,7 +40,7 @@ export class ConnexionComponent implements OnInit {
     this.service.seConnecterCompte(this.connexionForm.value).subscribe((donnee:string)=>{
       const compte:any = JSON.parse(donnee);
       if(compte.etat) {
-        localStorage.setItem("id", compte.id);
+        localStorage.setItem("compteId", compte.id);
         window.location.href = "home";
       }
     }, (err)=>{
