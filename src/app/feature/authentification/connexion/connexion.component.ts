@@ -11,37 +11,36 @@ import { AuthHttpService } from '../services/auth-http.service';
 /**
  * Class représentant le component d'une connexion Auth0
  * @author fabien
- * @version 2.0
  */
 export class ConnexionComponent implements OnInit {
 
-  form:FormGroup;
+  connexionForm:FormGroup;
 
   /**
    * Constructeur
    * @param service
    */
-  constructor(private service:AuthHttpService) {}
+  constructor(private service: AuthHttpService) {}
   
   /**
    * Cette méthode permet d'initiliaser du formulaire à zéro au démarage du composant
    */
   ngOnInit(): void {
-    this.form= new FormGroup({
-      pseudoOrEmail: new FormControl(""),
+    this.connexionForm= new FormGroup({
+      email: new FormControl(""),
       motDePasse: new FormControl("")
     })
   }
 
   /**
-   * Cette méthode permet de récupérer les données du formulaire, 
-   * et ajoute dans le local storage l'id du compte
+   * Cette méthode permet se connecter à un compte,
+   * et stocke dans le local storage l'identifiant du compte
    */
-  onSubmit(){
-    this.service.connexion(this.form.value).subscribe((donnee:string)=>{
+  seConnecterCompte(){
+    this.service.seConnecterCompte(this.connexionForm.value).subscribe((donnee:string)=>{
       const compte:any = JSON.parse(donnee);
       if(compte.etat) {
-        localStorage.setItem("id", compte.motDePasse);
+        localStorage.setItem("id", compte.id);
         window.location.href = "home";
       }
     }, (err)=>{

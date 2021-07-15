@@ -7,20 +7,19 @@ import { Injectable } from '@angular/core';
 /**
  * Class réprésentant le service d'un compte
  * @author fabien
- * @version 2.0
  */
 export class AuthHttpService {
 
-  private baseUrl:string =  "http://localhost:8080/auth";
+  private readonly baseUrl: string =  "http://localhost:8080/auth";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   /**
-   * Cette méthode permet de s'authentifier via l'API
+   * Cette méthode permet de se connecter à un compte
    * @param connexionDTO
-   * @returns une connexion à un compte
+   * @returns l'identifiant et l'état d'un compte
    */
-  public connexion(connexionDTO:any) {
+  public seConnecterCompte = (connexionDTO: any) => {
     return this.http.post(`${this.baseUrl}/connexion`, connexionDTO, {responseType: "text"})
   }
 }

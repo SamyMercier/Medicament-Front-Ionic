@@ -1,35 +1,30 @@
-.form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width:100%;
-}
-.content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width:100%;
+h1{margin:0}
+
+#suggestions{
+    position: absolute;
+    right:0;
+    width: 100%;
+    z-index: 12;
 }
 
-.duree{
+.suggestion-item{
     width: 100%;
-}
-.duree-info{
-    display: flex;
-    flex-direction: column;
+    text-align: right;
+    z-index: 12;
+    
 }
 
-.frequence{
-    width: 100%;
-}
-.frequence-info{
-    display: flex;
-    flex-direction: column;
-}
-.heures{
-    width: 100%;
+#cache-font{
+    display: block;
+    position: absolute;
+    left:0;
+    top:0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(2px);
+    z-index: 10;
 }
 
-ion-content{
-    width:100%;
+.layer2{
+    z-index: 12;
 }

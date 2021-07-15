@@ -32,6 +32,8 @@ export class MedicsNewFormComponent implements OnInit {
 
   medicTmp: MedicTmp;
 
+  listeSuggestions : string[] ;
+
   constructor(
     private modalController: ModalController,
 
@@ -46,6 +48,9 @@ export class MedicsNewFormComponent implements OnInit {
     this.horaireDataDto = new HoraireDataDto([]);
     this.medicTmp = new MedicTmp("", this.dureeDataDto, this.frequenceDataDto, []);
 
+
+      this.listeSuggestions=[];
+      console.log(this.listeSuggestions)
     this.medicForm = this.fb.group({
       nom: "",
       heures: this.fb.array([]),
