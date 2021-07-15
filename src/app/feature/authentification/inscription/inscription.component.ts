@@ -25,6 +25,9 @@ export class InscriptionComponent implements OnInit {
     private formBuilder: FormBuilder,
   ) { }
 
+    /**
+   * Cette méthode permet d'initiliaser du formulaire à zéro au démarage du composant
+   */
   ngOnInit(): void {
     this.inscriptionForm = this.formBuilder.group({
       email: ['', Validators.required],

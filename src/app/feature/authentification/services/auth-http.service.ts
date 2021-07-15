@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { Compte } from '../../compte/models/compte';
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +12,16 @@ import { Injectable } from '@angular/core';
  */
 export class AuthHttpService {
 
-  private readonly baseUrl: string =  "http://localhost:8080/auth";
+  private readonly baseUrl = `${environment.urlSpring}/auth`;
 
   constructor(private http: HttpClient) { }
 
   /**
    * Cette méthode permet de se connecter à un compte
-   * @param connexionDTO
+   * @param compte
    * @returns l'identifiant et l'état d'un compte
    */
-  public seConnecterCompte = (connexionDTO: any) => {
-    return this.http.post(`${this.baseUrl}/connexion`, connexionDTO, {responseType: "text"})
+  public seConnecterCompte = (compte: Compte) => {
+    return this.http.post(`${this.baseUrl}/connexion`, compte, {responseType: "text"})
   }
 }
