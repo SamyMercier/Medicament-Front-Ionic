@@ -26,7 +26,6 @@ export class UsersListComponent implements OnInit {
 
   ngOnInit(): void {
     this.compteIdSession = localStorage.getItem("compteId");
-    console.log(this.compteIdSession);
 
     this.service.findAllByCompteId(this.compteIdSession).subscribe(
       (data: User[]) => this.users = data,
