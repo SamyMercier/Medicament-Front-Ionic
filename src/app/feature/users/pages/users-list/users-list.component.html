@@ -66,8 +66,8 @@
     </ion-card>
 -->
 
-    <ion-button expand="full" size="large" color="success" routerLink="/utilisateurs/create">Ajouter un utilisateur</ion-button>
-    <ion-button expand="full" size="large" color="danger" routerLink="/home" *ngIf="aucunUtilisateurConnecte()">Retour</ion-button>
+    <ion-button *ngIf="users.length < 3" expand="full" size="large" color="success" routerLink="/utilisateurs/create">Ajouter un utilisateur</ion-button>
+    <ion-button expand="full" size="large" color="success" routerLink="/home" *ngIf="aucunUtilisateurConnecte()">Se connecter</ion-button>
 
     <div class="bottom">
         <ion-button expand="full" size="large" color="danger" routerLink="/connexion">Déconnexion</ion-button>
