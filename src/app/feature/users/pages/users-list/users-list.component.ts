@@ -12,7 +12,7 @@ import { UserService } from '../../services/user.service';
 })
 export class UsersListComponent implements OnInit {
 
-  compteIdSession: string = "60d33cc7d6a0c74f0c8f0936";
+  compteIdSession: string;
   utilisateurIdSession: string;
 
   users: User[] = [];
@@ -25,6 +25,9 @@ export class UsersListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.compteIdSession = localStorage.getItem("compteId");
+    console.log(this.compteIdSession);
+
     this.service.findAllByCompteId(this.compteIdSession).subscribe(
       (data: User[]) => this.users = data,
       console.error)

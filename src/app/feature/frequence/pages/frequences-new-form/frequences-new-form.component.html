@@ -1,40 +1,40 @@
-<ion-content class="content">
-    <form class="form" [formGroup]="frequenceForm">
+<ion-content color="primary">
+    
+    <form [formGroup]="frequenceForm">
         <ion-radio-group formControlName="choixFrequence">
             <ion-item *ngFor="let frequence of frequences">
-                <ion-label>{{frequence}}</ion-label>
+                <ion-label><h1>{{frequence}}</h1></ion-label>
                 <ion-radio value="{{frequence}}"></ion-radio>
             </ion-item>
         </ion-radio-group>
 
-        <ion-item class="classInput">
-            <ng-container *ngIf="choixFrequenceChaqueJoursTtsXHeures()">
-                <ion-item class="form-chaqueJourXHeures">
-                    <form [formGroup]="frequenceForm">
-                        <ion-item>
-                            <ion-label>Heure de Debut : </ion-label>
-                            <ion-datetime displayFormat="HH:mm" formControlName="heureDebut"></ion-datetime>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label>Rappel : </ion-label>
-                            <ion-datetime displayFormat="HH:mm" formControlName="rappel"></ion-datetime>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label>Heure de Fin : </ion-label>
-                            <ion-datetime displayFormat="HH:mm" formControlName="heureFin"></ion-datetime>
-                        </ion-item>
-                    </form>
-                </ion-item>
-            </ng-container>
-            <ng-container class="TtsXJours" *ngIf="choixFrequenceTtsxJours()">
+    
+        
+        <form [formGroup]="frequenceForm" *ngIf="choixFrequenceChaqueJoursTtsXHeures()">
+            <ion-item>
+                <ion-label>Heure de Debut : </ion-label>
+                <ion-datetime displayFormat="HH:mm" formControlName="heureDebut"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Rappel : </ion-label>
+                <ion-datetime displayFormat="HH:mm" formControlName="rappel"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Heure de Fin : </ion-label>
+                <ion-datetime displayFormat="HH:mm" formControlName="heureFin"></ion-datetime>
+            </ion-item>
+        </form>
+       
+           
+            <ng-container *ngIf="choixFrequenceTtsxJours()">
                 <form [formGroup]="frequenceForm">
                     <ion-label>Tous les :</ion-label>
                     <ion-input type="number" formControlName="x"></ion-input>
                 </form>
             </ng-container>
 
-            <ng-container class="CertainsJours" *ngIf="choixFrequenceCertainsJours()">
-                <form class="CertainsJours" [formGroup]="frequenceForm">
+            <ng-container *ngIf="choixFrequenceCertainsJours()">
+                <form [formGroup]="frequenceForm">
                     <ion-item>
                         <ion-checkbox checked="true" color="dark" formControlName="lundi"></ion-checkbox>
                         <ion-label> : Lundi</ion-label>
@@ -66,11 +66,12 @@
                     
                 </form>
             </ng-container>
-        </ion-item>
+       
     </form>
-    <ion-item class="buttons">
-        <ion-button (click)="dismiss()">Annuler</ion-button>
-        <ion-button (click)="dismissSave()">Save</ion-button>
-    </ion-item>
+
+    <ion-button expand="full" size="large" color="success" (click)="dismissSave()">Enregistrer</ion-button>
+    <div class="bottom">
+        <ion-button expand="full" size="large" color="danger" (click)="dismiss()">Retour</ion-button>
+    </div>
 
 </ion-content>
