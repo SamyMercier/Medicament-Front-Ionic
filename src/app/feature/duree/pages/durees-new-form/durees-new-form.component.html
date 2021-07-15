@@ -7,7 +7,7 @@
 
         <ion-radio-group formControlName="choixDuree" >
             <ion-item *ngFor="let duree of durees">
-                <ion-label><h1>{{duree}} : </h1></ion-label>
+                <ion-label><h1>{{duree}} ? </h1></ion-label>
                 <ion-radio value="{{duree}}"></ion-radio>
             </ion-item>
         </ion-radio-group>
@@ -16,14 +16,14 @@
 
         <form [formGroup]="dureeForm" *ngIf="choixDureeJusqueX()">
             <ion-item>
-                <ion-label><h1>Date de Fin : </h1></ion-label>
+                <ion-label><h1><ion-icon name="chevron-forward-outline"></ion-icon>Date de Fin : </h1></ion-label>
                 <ion-datetime cancel-text="Annuler" done-text="Valider" required displayFormat="DD/MM/YYYY" formControlName="dateFin"></ion-datetime>
             </ion-item>
         </form>
     
         <form [formGroup]="dureeForm" *ngIf="choixDureePendantX()">
             <ion-item>
-                <ion-label><h1>Nombre de jours : </h1></ion-label>
+                <ion-label><h1><ion-icon name="chevron-forward-outline"></ion-icon>Nbr de jours : </h1></ion-label>
                 <ion-input required type="number" formControlName="nbJour"></ion-input>
             </ion-item>
         </form>
