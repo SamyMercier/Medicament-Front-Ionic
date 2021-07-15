@@ -1,18 +1,19 @@
 <ion-content color="primary">
+
     <div class="medics">
         <div class="medic" *ngFor="let medic of medics">
-            <ion-card (click)="goToUpdate(medic.id)">
-                <ion-card-header>
-                    <ion-card-title>{{medic.nom}}</ion-card-title>
+            <ion-card>
+                <ion-card-header color="tertiary">
+                    <ion-card-title><h1>{{medic.nom}}</h1></ion-card-title>
                 </ion-card-header>
 
                 <ion-card-content>
                     <ion-list>
-                        <ion-item>dateDebut : {{medic.dureeDto.dateDebut | date : 'dd/MM/yyyy'}}</ion-item>
-                        <ion-item>dateFin : {{medic.dureeDto.dateFin | date : 'dd/MM/yyyy'}}</ion-item>
-                        <ion-item>1er prise : {{medic.frequenceDto.prises[0] | date : 'dd/MM/yyyy hh:mm'}}</ion-item>
-                        <ion-item>2e prise : {{medic.frequenceDto.prises[1] | date : 'dd/MM/yyyy hh:mm'}}</ion-item>
-                        <ion-item>3eprise : {{medic.frequenceDto.prises[2] | date : 'dd/MM/yyyy hh:mm'}}</ion-item>
+                        <ion-item><h1>Date de début : </h1>{{medic.dureeDto.dateDebut | date : 'dd/MM/yyyy'}}</ion-item>
+                        <ion-item><h1>Date de fin : </h1>{{medic.dureeDto.dateFin | date : 'dd/MM/yyyy'}}</ion-item>
+                        <ion-item *ngIf="medic.frequenceDto.prises.length > 0"><h1>1ère prise : </h1>{{medic.frequenceDto.prises[0] | date : 'dd/MM/yyyy hh:mm'}}</ion-item>
+                        <ion-item *ngIf="medic.frequenceDto.prises.length > 1"><h1>2ème prise : </h1>{{medic.frequenceDto.prises[1] | date : 'dd/MM/yyyy hh:mm'}}</ion-item>
+                        <ion-item *ngIf="medic.frequenceDto.prises.length > 2"><h1>3ème prise : </h1>{{medic.frequenceDto.prises[2] | date : 'dd/MM/yyyy hh:mm'}}</ion-item>
                     </ion-list>
                 </ion-card-content>
             </ion-card>
@@ -21,11 +22,7 @@
     <ion-button expand="full" size="large" color="success" [routerLink]="'/medics/create'">
         ajouter
     </ion-button>
-    
-    <div class="bottom">
         <ion-button expand="full" size="large" color="danger" routerLink="/home">
-        retour
+            retour
         </ion-button>
-    </div>
-
 </ion-content>
