@@ -72,6 +72,15 @@ export class MedicsNewFormComponent implements OnInit {
     }
   }
 
+  clickNomMedic(event){
+    this.medicTmp.nom = event;
+    this.listeSuggestions = [];
+  }
+
+  checkMedicNom(){
+    return this.medicTmp.nom === "";
+  }
+
   async openModalDureeForm() {
     const modaldureeForm = await this.modalController.create({
       component: DureesNewFormComponent,
