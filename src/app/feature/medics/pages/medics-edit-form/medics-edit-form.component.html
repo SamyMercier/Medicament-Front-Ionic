@@ -1,1 +1,82 @@
-{{this.medic.nom}}
+<ion-content>
+    <form class="form" [formGroup]="medicForm">
+        <ion-card class="card-container">
+            <ion-card-header>
+                <h1>Ajouter un médicament</h1>
+            </ion-card-header>
+
+            <ion-card-content class="content">
+                <ion-item class="nom">
+                    <ion-input name="nom" type="text" formControlName="nom" placeholder="nom"></ion-input>
+                </ion-item>
+
+                <ion-card class="duree" (click)="openModalDureeForm()">
+                    <ion-card-header >
+                        <ion-label>Duree</ion-label>
+                    </ion-card-header>
+
+                    <ion-card-content class="duree-info">
+                        <ion-label>{{dureeDataDto.choixDuree}}</ion-label>
+                        <ion-label>{{dureeDataDto.dateDebut | date : 'dd/MM/yyyy'}}</ion-label>
+                        <ion-label *ngIf="choixDureeJusqueX()">DateFin = {{dureeDataDto.dateFin | date : 'dd/MM/yyyy'}}</ion-label>
+                        <ion-label *ngIf="choixDureePendantX()">Nb = {{dureeDataDto.nbJour}}</ion-label>
+                    </ion-card-content>
+                </ion-card>
+
+                <ion-card class="frequence" (click)="openModalFrequenceForm()">
+                    <ion-card-header >
+                        <ion-label>Frequence de prises</ion-label>
+                    </ion-card-header>
+
+                    <ion-card-content class="frequence-info">
+                        <ion-label>{{frequenceDataDto.choixFrequence}}</ion-label>
+
+                        <ion-label *ngIf="choixFrequenceChaqueJoursTtsXHeures()">{{frequenceDataDto.heureDebut}}</ion-label>
+                        <ion-label *ngIf="choixFrequenceChaqueJoursTtsXHeures()">{{frequenceDataDto.rappel}}</ion-label>
+                        <ion-label *ngIf="choixFrequenceChaqueJoursTtsXHeures()">{{frequenceDataDto.heureFin}}</ion-label>
+
+                        <ion-label *ngIf="choixFrequenceTtsxJours()">x = {{frequenceDataDto.x}} </ion-label>
+
+                        <ion-label *ngIf="choixFrequenceCertainsJours() && certainsJoursLundi()">Lundi</ion-label>
+                        <ion-label *ngIf="choixFrequenceCertainsJours() && certainsJoursMardi()">Mardi</ion-label>
+                        <ion-label *ngIf="choixFrequenceCertainsJours() && certainsJoursMercredi()">Mercredi</ion-label>
+                        <ion-label *ngIf="choixFrequenceCertainsJours() && certainsJoursJeudi()">Jeudi</ion-label>
+                        <ion-label *ngIf="choixFrequenceCertainsJours() && certainsJoursVendredi()">Vendredi</ion-label>
+                        <ion-label *ngIf="choixFrequenceCertainsJours() && certainsJoursSamedi()">Samedi</ion-label>
+                        <ion-label *ngIf="choixFrequenceCertainsJours() && certainsJoursDimanche()">Dimanche</ion-label>
+
+                    </ion-card-content>
+                </ion-card>
+
+                <ion-card class="heures">
+                    <ion-card-header>
+                        <ion-label>Heures de prises</ion-label>
+                    </ion-card-header>
+
+                    <ion-card-content class="heures-form">
+                        <ng-container *ngIf="!choixFrequenceChaqueJoursTtsXHeures()">
+
+                            <ion-item class="ajouter-heures-button">
+                                <ion-button (click)="addHeures()">Ajouter heures</ion-button>
+                            </ion-item>
+    
+                            <ion-item class="ajouter-heure-form" formArrayName="heures"
+                                *ngFor="let he of medicForm.controls.heures?.value; let i = index; trackBy: trackByFn">
+                                <ion-item [formGroupName]="i">
+                                    <ion-label>Heure</ion-label>
+                                    <ion-datetime displayFormat="HH:mm" formControlName="heure"></ion-datetime>
+                                        
+                                </ion-item>
+                            </ion-item>
+    
+                        </ng-container>
+                    </ion-card-content>
+                </ion-card>
+
+                <ion-item>
+                    <ion-button (click)="modifier()">Update</ion-button>
+                </ion-item>
+            </ion-card-content>
+        </ion-card>
+    </form>
+</ion-content>

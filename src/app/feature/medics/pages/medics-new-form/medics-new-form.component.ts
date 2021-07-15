@@ -26,10 +26,10 @@ export class MedicsNewFormComponent implements OnInit {
   medicForm: FormGroup;
   heures: FormArray;
 
-  dureeDataDto : DureeDataDto;
-  frequenceDataDto : FrequenceDataDto;
-  horaireDataDto : HoraireDataDto;
-  
+  dureeDataDto: DureeDataDto;
+  frequenceDataDto: FrequenceDataDto;
+  horaireDataDto: HoraireDataDto;
+
   medicTmp: MedicTmp;
 
   listeSuggestions : string[] ;
@@ -37,20 +37,16 @@ export class MedicsNewFormComponent implements OnInit {
   constructor(
     private modalController: ModalController,
 
-
     private medicService: MedicService,
     private dureeService: DureeService,
     private frequenceService: FrequenceService,
     private fb: FormBuilder,
-    private router: Router,
-    private dialogRefDuree: MatDialogRef<DureesNewFormComponent>,
-    private dialogRefFrequence: MatDialogRef<FrequencesNewFormComponent>,
-    private dialog: MatDialog) {
+    private router: Router) {
 
-      this.dureeDataDto = new DureeDataDto(null, null, null, null);
-      this.frequenceDataDto = new FrequenceDataDto(null,null,null,null,null,null,null,null,null,null,null,null);
-      this.horaireDataDto = new HoraireDataDto([]);
-      this.medicTmp = new MedicTmp("", this.dureeDataDto, this.frequenceDataDto, []);
+    this.dureeDataDto = new DureeDataDto(null, null, null, null);
+    this.frequenceDataDto = new FrequenceDataDto(null, null, null, null, null, null, null, null, null, null, null, null);
+    this.horaireDataDto = new HoraireDataDto([]);
+    this.medicTmp = new MedicTmp("", this.dureeDataDto, this.frequenceDataDto, []);
 
 
       this.listeSuggestions=[];
@@ -67,23 +63,23 @@ export class MedicsNewFormComponent implements OnInit {
 
   async openModalDureeForm() {
     const modaldureeForm = await this.modalController.create({
-    component: DureesNewFormComponent,
+      component: DureesNewFormComponent,
     });
-    modaldureeForm.onDidDismiss().then(data=>{
+    modaldureeForm.onDidDismiss().then(data => {
       this.dureeDataDto = data.data;
-      })
+    })
     return await modaldureeForm.present();
-   }
+  }
 
-   async openModalFrequenceForm() {
+  async openModalFrequenceForm() {
     const modalFrequenceForm = await this.modalController.create({
-    component: FrequencesNewFormComponent,
+      component: FrequencesNewFormComponent,
     });
-    modalFrequenceForm.onDidDismiss().then(data=>{
+    modalFrequenceForm.onDidDismiss().then(data => {
       this.frequenceDataDto = data.data;
-      })
+    })
     return await modalFrequenceForm.present();
-   }
+  }
 
   ajouter = () => {
     this.medicTmp.nom = this.medicForm.value.nom;
@@ -91,13 +87,23 @@ export class MedicsNewFormComponent implements OnInit {
     this.medicTmp.frequenceData = this.frequenceDataDto;
 
     this.medicForm.value.heures.forEach(element => {
-      this.medicTmp.listeHeuresData.push(element.heure);
+      console.log(JSON.stringify(element));
+      let str = element.heure ;
+      console.log( JSON.stringify(str));
+      let d : String = str.split('T')[1];
+      console.log("d => " + d );
+      let m : String = d.split(':')[0];
+      console.log("m => "+ m);
+      let n : String= d.split(':')[1];
+      console.log("n => " + n)
+
+      this.medicTmp.listeHeuresData.push(m + ":" + n);
     });
 
-    console.log("AJOUTER => " +JSON.stringify(this.medicTmp));
-     this.medicService.create(this.medicTmp).subscribe(medic => {
+    console.log("AJOUTER => " + JSON.stringify(this.medicTmp));
+    this.medicService.create(this.medicTmp).subscribe(medic => {
       this.router.navigate(["/medics"]);
-    }); 
+    });
   }
 
   addHeures() {
@@ -133,7 +139,7 @@ export class MedicsNewFormComponent implements OnInit {
   }
 
   choixFrequenceChaqueJoursTtsXHeures() {
-    return this.frequenceDataDto.choixFrequence ===this.frequenceService.CHAQUE_JOURS_TTS_X_HEURES;
+    return this.frequenceDataDto.choixFrequence === this.frequenceService.CHAQUE_JOURS_TTS_X_HEURES;
   }
 
   choixFrequenceTtsxJours() {
@@ -144,25 +150,25 @@ export class MedicsNewFormComponent implements OnInit {
     return this.frequenceDataDto.choixFrequence === this.frequenceService.CERTAINS_JOURS;
   }
 
-  certainsJoursLundi(){
+  certainsJoursLundi() {
     return this.frequenceDataDto.lundi
   }
-  certainsJoursMardi(){
+  certainsJoursMardi() {
     return this.frequenceDataDto.mardi
   }
-  certainsJoursMercredi(){
+  certainsJoursMercredi() {
     return this.frequenceDataDto.mercredi
   }
-  certainsJoursJeudi(){
+  certainsJoursJeudi() {
     return this.frequenceDataDto.jeudi
   }
-  certainsJoursVendredi(){
+  certainsJoursVendredi() {
     return this.frequenceDataDto.vendredi
   }
-  certainsJoursSamedi(){
+  certainsJoursSamedi() {
     return this.frequenceDataDto.samedi
   }
-  certainsJoursDimanche(){
+  certainsJoursDimanche() {
     return this.frequenceDataDto.dimanche
   }
 

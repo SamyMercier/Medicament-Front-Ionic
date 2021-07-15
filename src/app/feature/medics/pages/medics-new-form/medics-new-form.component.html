@@ -6,36 +6,42 @@
         <ion-text>
             <h1>Ajouter un médicament</h1>
         </ion-text>
-    
+
         <ion-item class="layer2">
-            <ion-label><h1>Nom :</h1></ion-label>
+            <ion-label>
+                <h1>Nom :</h1>
+            </ion-label>
             <ion-input name="nom" type="text" formControlName="nom"></ion-input>
-            
+
         </ion-item>
         <ion-list id="suggestions">
-           
+
             <ion-item *ngFor="let suggestion of listeSuggestions" class="suggestion-item">
-                    <ion-text>
-                        {{suggestion}}
-                    </ion-text>
+                <ion-text>
+                    {{suggestion}}
+                </ion-text>
             </ion-item>
-           
-            
+
+
         </ion-list>
         <div id="cache-font" *ngIf="listeSuggestions.length>0"></div>
-        
+
         <ion-item (click)="openModalDureeForm()">
-            <ion-label><h1>Duree :</h1></ion-label>
-            <ion-text >
+            <ion-label>
+                <h1>Duree :</h1>
+            </ion-label>
+            <ion-text>
                 <h1 *ngIf="choixDureePendantX()">Pendant {{dureeDataDto.nbJour}} jours</h1>
                 <h1 *ngIf="dureeDataDto.dateDebut!=null">Début : {{dureeDataDto.dateDebut | date : 'dd/MM/yyyy'}}</h1>
                 <h1 *ngIf="choixDureeJusqueX()">Fin : {{dureeDataDto.dateFin | date : 'dd/MM/yyyy'}}</h1>
                 <h1 *ngIf="dureeDataDto.choixDuree==='Pas de fin'">Pas de fin</h1>
             </ion-text>
         </ion-item>
-        
+
         <ion-item (click)="openModalFrequenceForm()">
-            <ion-label><h1>Frequence :</h1></ion-label>
+            <ion-label>
+                <h1>Frequence :</h1>
+            </ion-label>
 
             <ion-text *ngIf="!choixFrequenceTtsxJours() && !choixFrequenceCertainsJours()">{{frequenceDataDto.choixFrequence}}</ion-text>
 
@@ -59,7 +65,6 @@
             <ion-label><h1>Prises :</h1></ion-label>
             <ion-button expand="full" size="large" color="success"  (click)="addHeures()">Ajouter</ion-button>
         </ion-item>
-
 
         <ion-card *ngIf="!choixFrequenceChaqueJoursTtsXHeures()">
         
