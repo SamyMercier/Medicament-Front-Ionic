@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  urlSpring : "http://localhost:8080"
+  urlSpring : "http://localhost:8080",
+  urlRechercheNomMedicament : "http://localhost:8081/medicament/recherche/denomination"
 };
 
 /*

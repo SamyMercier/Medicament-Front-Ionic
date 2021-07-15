@@ -11,7 +11,10 @@
             <ion-label>
                 <h1>Nom :</h1>
             </ion-label>
-            <ion-input name="nom" type="text" formControlName="nom"></ion-input>
+            <ion-searchbar name="nom" formControlName="nom" type="text" placeholder="Search" debounce="0" (ionChange)="ionChange($event)">
+
+            </ion-searchbar>
+            <ion-input   formControlName="nom"></ion-input>
 
         </ion-item>
         <ion-list id="suggestions">

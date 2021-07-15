@@ -25,8 +25,8 @@ export class MedicService {
     return this.http.get<Medic>(`${environment.urlSpring}/medics/${id}`);
   }
 
-  getByNom = (nom : String) : Observable<Medic> => {
-    return this.http.get<Medic>(`${environment.urlSpring}/medics/nom/${nom}`);
+  getByNom = (nom : String) : Observable<string[]> => {
+    return this.http.get<string[]>(`${environment.urlRechercheNomMedicament}/${nom}`);
   }
 
   getInfoMedic = (id: String): Observable<InfoMedic> => {
