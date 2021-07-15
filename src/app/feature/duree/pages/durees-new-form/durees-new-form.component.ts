@@ -56,9 +56,11 @@ export class DureesNewFormComponent implements OnInit {
   }
 
   dismissSave() {
+    
     this.dureeDataDto.choixDuree = this.dureeForm.value.choixDuree;
     this.dureeDataDto.dateDebut = this.dureeForm.value.dateDebut;
-    this.dureeDataDto.dateFin = this.dureeForm.value.dateFin;
+    this.dateNow = formatDate(this.dureeForm.value.dateFin, 'yyyy-MM-dd', 'en_US');
+    this.dureeDataDto.dateFin  = new Date(this.dateNow);
     this.dureeDataDto.nbJour = this.dureeForm.value.nbJour;
     this.viewCtrl.dismiss(this.dureeDataDto);
   }

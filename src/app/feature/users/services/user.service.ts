@@ -47,7 +47,9 @@ export class UserService {
   }
 
   save = (body : User) : Observable<User> => {
-    return this.http.post<User>(this.baseUrl, body);
+    console.log("ouaf")
+    console.log(body);
+    return this.http.post<User>(`${this.baseUrl}`, body);
   }
 
   update = (body : User) : Observable<User> => {

@@ -27,8 +27,4 @@ export class User {
             this.assistants = assistants;
     }
 
-    public getNom = () => {
-        return this.nom;
-    }
-
 }

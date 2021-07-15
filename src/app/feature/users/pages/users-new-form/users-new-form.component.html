@@ -19,10 +19,9 @@
             <ion-label>
                 <h1>Anniversaire :</h1>
             </ion-label>
-            <ion-datetime cancel-text="Annuler" done-text="Valider"  required="true" displayFormat="DD/MM/YYYY" formControlName="dateNaissance"></ion-datetime>
+            <ion-datetime cancel-text="Annuler" done-text="Valider" required="true" displayFormat="DD/MM/YYYY" formControlName="dateNaissance"></ion-datetime>
         </ion-item>
-        <ion-button color="success" expand="full" size="large" type="submit" ng-disabled="newUserForm.$invalid">Créer un
-            utilisateur</ion-button>
+        <ion-button color="success" expand="full" size="large" type="submit" ng-disabled="newUserForm.$invalid">Créer un utilisateur</ion-button>
     </form>
     <div class="bottom">
         <ion-button color="danger" expand="full" size="large" routerLink="/utilisateurs">Retour</ion-button>

@@ -1,40 +1,37 @@
-<ion-content class="content">
-    <form class="form" [formGroup]="dureeForm" >
+<ion-content color="primary">
+    <form [formGroup]="dureeForm" >
         <ion-item>
-            <ion-label>Date de debut</ion-label>
+            <ion-label><h1>Date de debut</h1></ion-label>
             <ion-datetime displayFormat="DD:MM:YYYY" formControlName="dateDebut"></ion-datetime>
         </ion-item>
 
-        <ion-radio-group formControlName="choixDuree">
+        <ion-radio-group formControlName="choixDuree" >
             <ion-item *ngFor="let duree of durees">
-                <ion-label>{{duree}}</ion-label>
+                <ion-label><h1>{{duree}} ? </h1></ion-label>
                 <ion-radio value="{{duree}}"></ion-radio>
             </ion-item>
         </ion-radio-group>
 
-        <ion-item class="classInput">
-            <ng-container class="jusqueX" *ngIf="choixDureeJusqueX()">
-                <form [formGroup]="dureeForm">
-                    <ion-item>
-                        <ion-label>Date de Fin : </ion-label>
-                        <ion-datetime displayFormat="DD:MM:YYYY" formControlName="dateFin"></ion-datetime>
-                    </ion-item>
-                </form>
-            </ng-container>
+        
 
-            <ng-container  class="pendantX" *ngIf="choixDureePendantX()">
-                <form [formGroup]="dureeForm">
-                    <ion-item>
-                        <ion-label>Nombre de jours : </ion-label>
-                        <ion-input type="number" formControlName="nbJour"></ion-input>
-                    </ion-item>
-                </form>
-            </ng-container>
-        </ion-item>
+        <form [formGroup]="dureeForm" *ngIf="choixDureeJusqueX()">
+            <ion-item>
+                <ion-label><h1>Date de Fin : </h1></ion-label>
+                <ion-datetime cancel-text="Annuler" done-text="Valider" required displayFormat="DD:MM:YYYY" formControlName="dateFin"></ion-datetime>
+
+            </ion-item>
+        </form>
+    
+        <form [formGroup]="dureeForm" *ngIf="choixDureePendantX()">
+            <ion-item>
+                <ion-label><h1><ion-icon name="chevron-forward-outline"></ion-icon>Nbr de jours : </h1></ion-label>
+                <ion-input required type="number" formControlName="nbJour"></ion-input>
+            </ion-item>
+        </form>
 
     </form>
-    <ion-item class="buttons">
-        <ion-button (click)="dismiss()">Annuler</ion-button>
-        <ion-button (click)="dismissSave()">Save</ion-button>
-    </ion-item>
+
+    <ion-button expand="full" size="large" color="success" (click)="dismissSave()">Enregistrer</ion-button>
+    <ion-button expand="full" size="large" color="danger" (click)="dismiss()">Annuler</ion-button>
+
 </ion-content>
