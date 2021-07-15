@@ -7,15 +7,15 @@
             <h1>Ajouter un médicament</h1>
         </ion-text>
 
-        <ion-item class="layer2">
-            <ion-label>
-                <h1>Nom :</h1>
-            </ion-label>
-            <ion-searchbar *ngIf="checkMedicNom()" name="nom"  type="text" placeholder="Search" debounce="0" (ionChange)="ionChange($event)">
+        <ion-searchbar class="layer2" *ngIf="checkMedicNom()" name="nom"  type="text" placeholder="Search" debounce="0" (ionChange)="ionChange($event)">
                 
-            </ion-searchbar>
+        </ion-searchbar>
+
+        <ion-item *ngIf="!checkMedicNom()">
             {{medicTmp.nom}}
         </ion-item>
+            
+
 
         
         <ion-list id="suggestions">
