@@ -2,7 +2,7 @@
     <form [formGroup]="dureeForm" >
         <ion-item>
             <ion-label><h1>Date de debut</h1></ion-label>
-            <ion-datetime displayFormat="DD:MM:YYYY" formControlName="dateDebut"></ion-datetime>
+            <ion-datetime displayFormat="DD/MM/YYYY" formControlName="dateDebut"></ion-datetime>
         </ion-item>
 
         <ion-radio-group formControlName="choixDuree" >
@@ -17,7 +17,7 @@
         <form [formGroup]="dureeForm" *ngIf="choixDureeJusqueX()">
             <ion-item>
                 <ion-label><h1>Date de Fin : </h1></ion-label>
-                <ion-datetime cancel-text="Annuler" done-text="Valider" required displayFormat="DD:MM:YYYY" formControlName="dateFin"></ion-datetime>
+                <ion-datetime cancel-text="Annuler" done-text="Valider" required displayFormat="DD/MM/YYYY" formControlName="dateFin"></ion-datetime>
 
             </ion-item>
         </form>

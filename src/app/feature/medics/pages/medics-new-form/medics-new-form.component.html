@@ -7,16 +7,15 @@
             <h1>Ajouter un médicament</h1>
         </ion-text>
 
-        <ion-item class="layer2">
-            <ion-label>
-                <h1>Nom :</h1>
-            </ion-label>
-            <ion-searchbar name="nom" formControlName="nom" type="text" placeholder="Search" debounce="0" (ionChange)="ionChange($event)">
+        
+        <ion-searchbar class="layer2" name="nom" formControlName="nom" type="text" placeholder="Search" debounce="0" (ionChange)="ionChange($event)">
 
-            </ion-searchbar>
-            <ion-input   formControlName="nom"></ion-input>
-
+        </ion-searchbar>
+        <ion-item>
+            {{this.medicTmp.nom}}
         </ion-item>
+
+        
         <ion-list id="suggestions">
 
             <ion-item *ngFor="let suggestion of listeSuggestions" class="suggestion-item">
