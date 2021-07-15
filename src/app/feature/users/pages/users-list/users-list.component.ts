@@ -22,10 +22,12 @@ export class UsersListComponent implements OnInit {
   constructor(
     private service: UserService,
     private router: Router
-  ) { }
+  ) {
+    this.compteIdSession = localStorage.getItem("compteId");
+   }
 
   ngOnInit(): void {
-    this.compteIdSession = localStorage.getItem("compteId");
+    
 
     this.service.findAllByCompteId(this.compteIdSession).subscribe(
       (data: User[]) => this.users = data,

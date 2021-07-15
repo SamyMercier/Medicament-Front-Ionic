@@ -45,7 +45,7 @@ export class UsersNewFormComponent implements OnInit {
     this.user.dateNaissance  = new Date(this.dateNow);
     console.log(this.user)
     this.userService.save(this.user).subscribe(user => {
-      this.router.navigate(["/medics"]);
+      this.router.navigate(["/utilisateurs"]);
     });
   }
 
