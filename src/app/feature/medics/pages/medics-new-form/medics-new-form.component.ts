@@ -32,7 +32,7 @@ export class MedicsNewFormComponent implements OnInit {
 
   medicTmp: MedicTmp;
 
-  listeSuggestions : string[] ;
+  listeSuggestions: string[];
 
   constructor(
     private modalController: ModalController,
@@ -49,8 +49,8 @@ export class MedicsNewFormComponent implements OnInit {
     this.medicTmp = new MedicTmp("", this.dureeDataDto, this.frequenceDataDto, []);
 
 
-      this.listeSuggestions=[];
-      console.log(this.listeSuggestions)
+    this.listeSuggestions = [];
+    console.log(this.listeSuggestions)
     this.medicForm = this.fb.group({
       nom: "",
       heures: this.fb.array([]),
@@ -59,6 +59,17 @@ export class MedicsNewFormComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ionChange(event){
+    console.log(event.detail.value ==="")
+    if (event.detail.value === ""){
+      this.listeSuggestions = [];
+    } else{
+      this.medicService.getByNom(event.detail.value).subscribe(data =>{
+        this.listeSuggestions = data;
+      });
+    }
   }
 
   async openModalDureeForm() {
@@ -88,13 +99,13 @@ export class MedicsNewFormComponent implements OnInit {
 
     this.medicForm.value.heures.forEach(element => {
       console.log(JSON.stringify(element));
-      let str = element.heure ;
-      console.log( JSON.stringify(str));
-      let d : String = str.split('T')[1];
-      console.log("d => " + d );
-      let m : String = d.split(':')[0];
-      console.log("m => "+ m);
-      let n : String= d.split(':')[1];
+      let str = element.heure;
+      console.log(JSON.stringify(str));
+      let d: String = str.split('T')[1];
+      console.log("d => " + d);
+      let m: String = d.split(':')[0];
+      console.log("m => " + m);
+      let n: String = d.split(':')[1];
       console.log("n => " + n)
 
       this.medicTmp.listeHeuresData.push(m + ":" + n);
