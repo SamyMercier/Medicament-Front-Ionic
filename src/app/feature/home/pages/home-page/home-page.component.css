@@ -34,3 +34,10 @@ h1{
 #header{
     margin-top: 20px;
 }
+
+#notification-alert{
+    font-size: 25px;
+    position: relative;
+    right:18px;
+    top:7px;
+}

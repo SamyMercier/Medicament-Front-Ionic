@@ -3,11 +3,15 @@
  * @author fabien
  */
 export class Notification {
-    private _utilisateurId: string;
-    private _message: string;
+    public utilisateurId: string;
+    public message: string;
+    public date: Date;
+    public isVue: boolean;
 
-    constructor(utilisateurId: string, message: string) {
-        this._utilisateurId = utilisateurId;
-        this._message = message;
+    constructor(utilisateurId: string, message: string, date: Date, isVue: boolean) {
+        this.utilisateurId = utilisateurId;
+        this.message = message;
+        this.date = date;
+        this.isVue = isVue;
     }
 }
