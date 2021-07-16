@@ -70,6 +70,6 @@
     <ion-button expand="full" size="large" color="success" routerLink="/home" *ngIf="aucunUtilisateurConnecte()">Se connecter</ion-button>
 
     <div class="bottom">
-        <ion-button expand="full" size="large" color="danger" routerLink="/connexion">Déconnexion</ion-button>
+        <ion-button expand="full" size="large" color="danger" routerLink="/connexion" (click)="deconnectionDuCompte()">Déconnexion</ion-button>
     </div>
 </ion-content>

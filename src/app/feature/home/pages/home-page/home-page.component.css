@@ -18,3 +18,19 @@ p{
     margin: 0;
     font-size: 20px;
 }
+
+.medic-name{
+    overflow: hidden;
+}
+
+h1{
+    margin:0;
+}
+
+#medics-content{
+    margin-top:25px;
+}
+
+#header{
+    margin-top: 20px;
+}

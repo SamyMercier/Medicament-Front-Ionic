@@ -6,7 +6,25 @@
     </div>
 </ion-toolbar>
 <ion-content color="primary">
+    <div id="medics-content">
+        <ion-item color="tertiary">
+            <ion-label>
+                <h1>Prochaines prises</h1> 
+            </ion-label> 
+        </ion-item>
+    
+        <div *ngFor="let medic of medics; let i = index">
+            <ion-item *ngIf="i < 3" >
+                <ion-text>{{medic.frequenceDto.prises[0] |  date : 'dd/MM H:mm'}}</ion-text>
+                <ion-item>
+                    <ion-text><h1 class="medic-name">{{medic.nom}}</h1></ion-text>
+                </ion-item>
+            </ion-item>
+        </div>
+        
+    </div>
 
+    
 
     <div class="bottom">
         <ion-button expand="full" size="large" color="success" routerLink="/medics">Gestion</ion-button>

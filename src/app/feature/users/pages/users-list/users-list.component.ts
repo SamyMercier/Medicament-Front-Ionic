@@ -27,8 +27,6 @@ export class UsersListComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    
-
     this.service.findAllByCompteId(this.compteIdSession).subscribe(
       (data: User[]) => this.users = data,
       console.error)
@@ -86,5 +84,10 @@ export class UsersListComponent implements OnInit {
 
   aucunUtilisateurConnecte = () => {
     return localStorage.getItem("utilisateurId")!=null;
+  }
+
+  deconnectionDuCompte = () => {
+    localStorage.removeItem("compteId");
+    localStorage.removeItem("utilisateurId");
   }
 }
